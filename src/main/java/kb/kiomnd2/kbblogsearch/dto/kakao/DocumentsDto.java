@@ -1,17 +1,17 @@
 package kb.kiomnd2.kbblogsearch.dto.kakao;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.ToString;
+import kb.kiomnd2.kbblogsearch.dto.converter.LocalDateTimeDeserializer;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Getter
 @ToString
 @AllArgsConstructor
+@NoArgsConstructor
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class DocumentsDto {
 
@@ -25,5 +25,5 @@ public class DocumentsDto {
 
     private String thumbnail;
 
-    private LocalDateTime datetime;
+    private String datetime;
 }

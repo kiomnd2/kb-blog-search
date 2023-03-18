@@ -1,4 +1,4 @@
-package kb.kiomnd2.kbblogsearch.dto.converer;
+package kb.kiomnd2.kbblogsearch.dto.converter;
 
 
 import com.fasterxml.jackson.core.JacksonException;

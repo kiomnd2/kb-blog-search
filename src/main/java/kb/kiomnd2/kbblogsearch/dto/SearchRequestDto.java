@@ -2,8 +2,7 @@ package kb.kiomnd2.kbblogsearch.dto;
 
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import kb.kiomnd2.kbblogsearch.dto.converer.SortDeserializer;
+import kb.kiomnd2.kbblogsearch.dto.converter.SortDeserializer;
 import kb.kiomnd2.kbblogsearch.enums.Sort;
 import lombok.*;
 

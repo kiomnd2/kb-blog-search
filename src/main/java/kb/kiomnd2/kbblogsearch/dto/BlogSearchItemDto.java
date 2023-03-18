@@ -17,6 +17,6 @@ public class BlogSearchItemDto {
 
     private final String bloggerName;
 
-    private final LocalDateTime createAt;
+    private final String createAt;
 
 }

@@ -15,6 +15,7 @@ public class ApiUtil {
 
         MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
         for (Field declaredField : declaredFields) {
+            declaredField.setAccessible(true);
             try {
                 String key = declaredField.getName();
                 Object value = declaredField.get(request);

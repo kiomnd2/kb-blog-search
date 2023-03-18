@@ -12,7 +12,8 @@ import org.mapstruct.Mappings;
 import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
 
-@Mapper
+
+@Mapper(uses = {DocumentMapper.class})
 public interface KakaoRequestMapper extends BlogMapper<KakaoBlogResponseDto, KakaoBlogRequestDto> {
 
     KakaoRequestMapper INSTANCE = Mappers.getMapper(KakaoRequestMapper.class);
@@ -26,12 +27,11 @@ public interface KakaoRequestMapper extends BlogMapper<KakaoBlogResponseDto, Kak
     KakaoBlogRequestDto fromRequest(SearchRequestDto requestDto);
 
 
+    @Named("documentsToItems")
     @Mappings({
             @Mapping(source = "meta.totalCount", target = "totalCount"),
             @Mapping(source = "meta.pageableCount", target = "pageableCount"),
-            @Mapping(source = "documents.url", target = "items.blogLink"),
-            @Mapping(source = "documents.blogname", target = "items.bloggerName"),
-            @Mapping(source = "documents.datetime", target = "items.createAt"),
+            @Mapping(source = "documents", target = "items")
     })
     @Override
     BlogSearchResultDto toResponse(KakaoBlogResponseDto request);
