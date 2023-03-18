@@ -14,9 +14,9 @@ import org.mapstruct.factory.Mappers;
 
 
 @Mapper(uses = {DocumentMapper.class})
-public interface KakaoRequestMapper extends BlogMapper<KakaoBlogResponseDto, KakaoBlogRequestDto> {
+public interface KakaoMapper extends BlogMapper<KakaoBlogResponseDto, KakaoBlogRequestDto> {
 
-    KakaoRequestMapper INSTANCE = Mappers.getMapper(KakaoRequestMapper.class);
+    KakaoMapper INSTANCE = Mappers.getMapper(KakaoMapper.class);
 
     @Mappings({
                     @Mapping(source = "keyword", target = "query"),

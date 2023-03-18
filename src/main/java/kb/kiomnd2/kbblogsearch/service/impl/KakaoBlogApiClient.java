@@ -1,9 +1,12 @@
 package kb.kiomnd2.kbblogsearch.service.impl;
 
-import kb.kiomnd2.kbblogsearch.dto.kakao.KakaoBlogRequestDto;
+import kb.kiomnd2.kbblogsearch.dto.BlogSearchResultDto;
+import kb.kiomnd2.kbblogsearch.dto.SearchRequestDto;
 import kb.kiomnd2.kbblogsearch.dto.kakao.KakaoBlogResponseDto;
+import kb.kiomnd2.kbblogsearch.mapper.kakao.KakaoMapper;
 import kb.kiomnd2.kbblogsearch.property.KakaoApiProperty;
 import kb.kiomnd2.kbblogsearch.service.BlogApiClient;
+import kb.kiomnd2.kbblogsearch.service.BlogResultMaker;
 import kb.kiomnd2.kbblogsearch.utils.ApiUtil;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -20,16 +23,18 @@ import org.springframework.web.util.UriComponentsBuilder;
 @Primary
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 @Service
-public class KakaoBlogApiClient implements BlogApiClient<KakaoBlogRequestDto, KakaoBlogResponseDto> {
+public class KakaoBlogApiClient implements BlogApiClient {
 
     private final RestTemplate restTemplate;
 
     private final KakaoApiProperty kakaoApiProperty;
 
+    private final BlogResultMaker blogResultMaker;
+
     @Override
-    public KakaoBlogResponseDto sendRequest(KakaoBlogRequestDto searchRequestDto) {
+    public BlogSearchResultDto sendRequest(SearchRequestDto searchRequestDto) {
         UriComponents uriComponents = UriComponentsBuilder.fromUriString(kakaoApiProperty.getUrl())
-                .queryParams(ApiUtil.parseParam(searchRequestDto))
+                .queryParams(ApiUtil.parseParam(KakaoMapper.INSTANCE.fromRequest(searchRequestDto)))
                 .encode(kakaoApiProperty.getCharset())
                 .build();
 
@@ -38,7 +43,12 @@ public class KakaoBlogApiClient implements BlogApiClient<KakaoBlogRequestDto, Ka
         headers.set(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
         HttpEntity<KakaoBlogResponseDto> entity = new HttpEntity<>(headers);
 
-        return restTemplate.exchange(uriComponents.toUri(), HttpMethod.GET, entity ,KakaoBlogResponseDto.class)
+        KakaoBlogResponseDto response = restTemplate.exchange(uriComponents.toUri(),
+                        HttpMethod.GET,
+                        entity,
+                        KakaoBlogResponseDto.class)
                 .getBody();
+
+        return blogResultMaker.make(response);
     }
 }

@@ -1,5 +1,6 @@
 package kb.kiomnd2.kbblogsearch.dto.kakao;
 
+import kb.kiomnd2.kbblogsearch.dto.ResponseMark;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,7 @@ import java.util.List;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class KakaoBlogResponseDto {
+public class KakaoBlogResponseDto implements ResponseMark {
 
     private MetaDto meta;
 

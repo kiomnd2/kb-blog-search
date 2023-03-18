@@ -6,11 +6,11 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-public class Response<T> {
+public class ResponseDto<T> {
 
     private final T result;
 
-    public static <T> Response<T> of(T body) {
-        return new Response<>(body);
+    public static <T> ResponseDto<T> of(T body) {
+        return new ResponseDto<>(body);
     }
 }
