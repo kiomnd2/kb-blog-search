@@ -43,12 +43,17 @@ public class KakaoBlogApiClient implements BlogApiClient {
         headers.set(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
         HttpEntity<KakaoBlogResponseDto> entity = new HttpEntity<>(headers);
 
-        KakaoBlogResponseDto response = restTemplate.exchange(uriComponents.toUri(),
-                        HttpMethod.GET,
-                        entity,
-                        KakaoBlogResponseDto.class)
-                .getBody();
-
-        return blogResultMaker.make(response);
+        try {
+            KakaoBlogResponseDto response = restTemplate.exchange(uriComponents.toUri(),
+                            HttpMethod.GET,
+                            entity,
+                            KakaoBlogResponseDto.class)
+                    .getBody();
+            System.out.println(response);
+            return blogResultMaker.make(response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
     }
 }

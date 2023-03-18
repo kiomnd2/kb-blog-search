@@ -1,9 +1,11 @@
 package kb.kiomnd2.kbblogsearch.service.impl;
 
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchResultDto;
+import kb.kiomnd2.kbblogsearch.dto.SearchDto;
 import kb.kiomnd2.kbblogsearch.dto.SearchRequestDto;
 import kb.kiomnd2.kbblogsearch.jpa.entity.Search;
 import kb.kiomnd2.kbblogsearch.jpa.repository.SearchRepository;
+import kb.kiomnd2.kbblogsearch.mapper.entity.SearchMapper;
 import kb.kiomnd2.kbblogsearch.service.BlogApiClient;
 import kb.kiomnd2.kbblogsearch.service.BlogSearchService;
 import lombok.AccessLevel;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
@@ -27,6 +30,11 @@ public class BlogSearchServiceImpl implements BlogSearchService {
         BlogSearchResultDto searchResultDto = client.sendRequest(request);
         this.updateSearch(request.getKeyword());
         return searchResultDto;
+    }
+
+    @Override
+    public List<SearchDto> getSearchList() {
+        return SearchMapper.INSTANCE.toListDto(searchRepository.findTop10ByOrderByCountDesc());
     }
 
     @Transactional

@@ -7,8 +7,9 @@ import lombok.*;
 
 @Getter
 @ToString
+@Builder
 @NoArgsConstructor
-@AllArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class MetaDto {
 
