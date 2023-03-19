@@ -1,7 +1,7 @@
 package kb.kiomnd2.kbblogsearch.mapper.kakao;
 
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchResultDto;
-import kb.kiomnd2.kbblogsearch.dto.SearchRequestDto;
+import kb.kiomnd2.kbblogsearch.dto.BlogSearchRequestDto;
 import kb.kiomnd2.kbblogsearch.dto.kakao.KakaoBlogRequestDto;
 import kb.kiomnd2.kbblogsearch.dto.kakao.KakaoBlogResponseDto;
 import kb.kiomnd2.kbblogsearch.enums.Sort;
@@ -24,7 +24,7 @@ public interface KakaoMapper extends BlogMapper<KakaoBlogResponseDto, KakaoBlogR
                     @Mapping(source = "pageable.offset", target = "page"),
                     @Mapping(source = "pageable.limit", target = "size")
             })
-    KakaoBlogRequestDto fromRequest(SearchRequestDto requestDto);
+    KakaoBlogRequestDto fromRequest(BlogSearchRequestDto requestDto);
 
 
     @Named("documentsToItems")

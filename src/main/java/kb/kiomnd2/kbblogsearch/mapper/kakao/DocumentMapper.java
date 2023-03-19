@@ -13,6 +13,8 @@ public interface DocumentMapper {
 
     @Mappings({
             @Mapping(source = "url", target = "blogLink"),
+            @Mapping(source = "title", target = "title"),
+            @Mapping(source = "contents", target = "contents"),
             @Mapping(source = "blogname", target = "bloggerName"),
             @Mapping(source = "datetime", target = "createAt"),
     })

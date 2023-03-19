@@ -47,13 +47,15 @@ class BlogSearchApiTest {
         String blogLink = "link";
         String blogName = "blogName";
         String createAt = "20200101";
+        String title = "title";
+        String content = "content";
 
         PageableDto pageableDto = PageableDto.builder()
                 .limit(10)
                 .offset(0)
                 .build();
 
-        SearchRequestDto request = SearchRequestDto.builder()
+        BlogSearchRequestDto request = BlogSearchRequestDto.builder()
                 .keyword("test")
                 .sort(Sort.ACCURACY)
                 .pageable(pageableDto)
@@ -64,7 +66,7 @@ class BlogSearchApiTest {
                 .totalCount(totalCount)
                 .pageableCount(pageableCount)
                 .items(List.of(
-                        new BlogSearchItemDto(blogLink, blogName, createAt)
+                        new BlogSearchItemDto(title, blogLink, blogName, content, createAt)
                 ))
                 .build();
 

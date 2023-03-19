@@ -13,9 +13,13 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class BlogSearchItemDto {
 
+    private final String title;
+
     private final String blogLink;
 
     private final String bloggerName;
+
+    private final String contents;
 
     private final String createAt;
 

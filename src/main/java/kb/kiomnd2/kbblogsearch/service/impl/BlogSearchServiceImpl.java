@@ -2,7 +2,7 @@ package kb.kiomnd2.kbblogsearch.service.impl;
 
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchResultDto;
 import kb.kiomnd2.kbblogsearch.dto.SearchDto;
-import kb.kiomnd2.kbblogsearch.dto.SearchRequestDto;
+import kb.kiomnd2.kbblogsearch.dto.BlogSearchRequestDto;
 import kb.kiomnd2.kbblogsearch.jpa.entity.Search;
 import kb.kiomnd2.kbblogsearch.jpa.repository.SearchRepository;
 import kb.kiomnd2.kbblogsearch.mapper.entity.SearchMapper;
@@ -26,7 +26,7 @@ public class BlogSearchServiceImpl implements BlogSearchService {
 
     @Transactional
     @Override
-    public BlogSearchResultDto search(SearchRequestDto request) {
+    public BlogSearchResultDto search(BlogSearchRequestDto request) {
         BlogSearchResultDto searchResultDto = client.sendRequest(request);
         this.updateSearch(request.getKeyword());
         return searchResultDto;

@@ -1,9 +1,9 @@
 package kb.kiomnd2.kbblogsearch.controller;
 
+import kb.kiomnd2.kbblogsearch.dto.BlogSearchRequestDto;
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchResultDto;
 import kb.kiomnd2.kbblogsearch.dto.ResponseDto;
 import kb.kiomnd2.kbblogsearch.dto.SearchDto;
-import kb.kiomnd2.kbblogsearch.dto.SearchRequestDto;
 import kb.kiomnd2.kbblogsearch.service.BlogSearchService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +19,7 @@ public class BlogSearchApi {
     private final BlogSearchService blogSearchService;
 
     @PostMapping("/blog")
-    public ResponseEntity<ResponseDto<BlogSearchResultDto>> searchBlog(@RequestBody SearchRequestDto request) {
+    public ResponseEntity<ResponseDto<BlogSearchResultDto>> searchBlog(@RequestBody BlogSearchRequestDto request) {
         return ResponseEntity.ok(ResponseDto.of(blogSearchService.search(request)));
     }
 

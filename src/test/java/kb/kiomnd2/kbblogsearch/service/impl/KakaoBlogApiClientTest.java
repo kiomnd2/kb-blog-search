@@ -1,6 +1,6 @@
 package kb.kiomnd2.kbblogsearch.service.impl;
 
-import kb.kiomnd2.kbblogsearch.dto.SearchRequestDto;
+import kb.kiomnd2.kbblogsearch.dto.BlogSearchRequestDto;
 import kb.kiomnd2.kbblogsearch.enums.Sort;
 import kb.kiomnd2.kbblogsearch.service.BlogSearchService;
 import org.junit.jupiter.api.Test;
@@ -15,7 +15,7 @@ class KakaoBlogApiClientTest {
 
     @Test
     void test() {
-        SearchRequestDto requestDto = SearchRequestDto.builder()
+        BlogSearchRequestDto requestDto = BlogSearchRequestDto.builder()
                 .keyword("test")
                 .sort(Sort.ACCURACY)
                 .build();

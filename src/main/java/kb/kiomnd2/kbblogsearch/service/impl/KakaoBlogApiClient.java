@@ -1,12 +1,13 @@
 package kb.kiomnd2.kbblogsearch.service.impl;
 
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchResultDto;
-import kb.kiomnd2.kbblogsearch.dto.SearchRequestDto;
+import kb.kiomnd2.kbblogsearch.dto.BlogSearchRequestDto;
 import kb.kiomnd2.kbblogsearch.dto.kakao.KakaoBlogResponseDto;
 import kb.kiomnd2.kbblogsearch.mapper.kakao.KakaoMapper;
 import kb.kiomnd2.kbblogsearch.property.KakaoApiProperty;
 import kb.kiomnd2.kbblogsearch.service.BlogApiClient;
-import kb.kiomnd2.kbblogsearch.service.BlogResultMaker;
+import kb.kiomnd2.kbblogsearch.service.BlogResultMakeService;
+import kb.kiomnd2.kbblogsearch.service.BlogSearchErrorProcessor;
 import kb.kiomnd2.kbblogsearch.utils.ApiUtil;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -29,12 +30,14 @@ public class KakaoBlogApiClient implements BlogApiClient {
 
     private final KakaoApiProperty kakaoApiProperty;
 
-    private final BlogResultMaker blogResultMaker;
+    private final BlogResultMakeService blogResultMakeService;
+
+    private final BlogSearchErrorProcessor blogSearchErrorProcessor;
 
     @Override
-    public BlogSearchResultDto sendRequest(SearchRequestDto searchRequestDto) {
+    public BlogSearchResultDto sendRequest(BlogSearchRequestDto blogSearchRequestDto) {
         UriComponents uriComponents = UriComponentsBuilder.fromUriString(kakaoApiProperty.getUrl())
-                .queryParams(ApiUtil.parseParam(KakaoMapper.INSTANCE.fromRequest(searchRequestDto)))
+                .queryParams(ApiUtil.parseParam(KakaoMapper.INSTANCE.fromRequest(blogSearchRequestDto)))
                 .encode(kakaoApiProperty.getCharset())
                 .build();
 
@@ -49,11 +52,10 @@ public class KakaoBlogApiClient implements BlogApiClient {
                             entity,
                             KakaoBlogResponseDto.class)
                     .getBody();
-            System.out.println(response);
-            return blogResultMaker.make(response);
+            return blogResultMakeService.make(response);
         } catch (Exception e) {
             e.printStackTrace();
-            throw e;
+            return blogSearchErrorProcessor.process(blogSearchRequestDto);
         }
     }
 }

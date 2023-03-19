@@ -10,7 +10,7 @@ import lombok.*;
 @Builder
 @ToString
 @AllArgsConstructor
-public class SearchRequestDto {
+public class BlogSearchRequestDto {
 
     // 검색 키워드
     private final String keyword;

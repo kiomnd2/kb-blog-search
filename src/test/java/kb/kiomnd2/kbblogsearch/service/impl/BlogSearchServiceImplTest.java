@@ -5,18 +5,15 @@ import kb.kiomnd2.kbblogsearch.enums.Sort;
 import kb.kiomnd2.kbblogsearch.jpa.entity.Search;
 import kb.kiomnd2.kbblogsearch.jpa.repository.SearchRepository;
 import kb.kiomnd2.kbblogsearch.service.BlogApiClient;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -47,8 +44,10 @@ class BlogSearchServiceImplTest {
         String blogLink = "http://blogLink.com";
         String blogName = "blogName";
         String createAt = "20230319";
+        String title = "title";
+        String content = "content";
 
-        SearchRequestDto request = SearchRequestDto.builder()
+        BlogSearchRequestDto request = BlogSearchRequestDto.builder()
                 .keyword(keyWord)
                 .pageable(PageableDto.builder()
                         .limit(10)
@@ -62,7 +61,7 @@ class BlogSearchServiceImplTest {
                 .totalCount(totalCount)
                 .pageableCount(pageableCount)
                 .items(List.of(
-                        new BlogSearchItemDto(blogLink, blogName, createAt)
+                        new BlogSearchItemDto(title, blogLink, blogName, content, createAt)
                 ))
                 .build();
 
