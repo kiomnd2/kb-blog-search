@@ -5,6 +5,7 @@ import kb.kiomnd2.kbblogsearch.dto.BlogSearchResultDto;
 import kb.kiomnd2.kbblogsearch.dto.ResponseMark;
 import kb.kiomnd2.kbblogsearch.dto.kakao.KakaoBlogResponseDto;
 import kb.kiomnd2.kbblogsearch.mapper.kakao.KakaoMapper;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnSingleCandidate;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -16,8 +17,8 @@ public class KakaoResponseAdapterImpl implements BlogResponseAdapter {
     }
 
     @Override
-    public BlogSearchResultDto handle(ResponseMark kakaoBlogResponseDto) {
-        KakaoBlogResponseDto response = (KakaoBlogResponseDto) kakaoBlogResponseDto;
+    public BlogSearchResultDto handle(ResponseMark responseDto) {
+        KakaoBlogResponseDto response = (KakaoBlogResponseDto) responseDto;
         return KakaoMapper.INSTANCE.toResponse(response);
     }
 }

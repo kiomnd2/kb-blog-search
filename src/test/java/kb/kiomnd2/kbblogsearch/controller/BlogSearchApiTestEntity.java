@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ExtendWith(MockitoExtension.class)
 @WebMvcTest(BlogSearchApi.class)
-class BlogSearchApiTest {
+class BlogSearchApiTestEntity {
 
     @Autowired
     MockMvc mockMvc;
@@ -51,15 +51,12 @@ class BlogSearchApiTest {
         String title = "title";
         String content = "content";
 
-        PageableDto pageableDto = PageableDto.builder()
-                .limit(10)
-                .offset(0)
-                .build();
 
         BlogSearchRequestDto request = BlogSearchRequestDto.builder()
                 .keyword("test")
                 .sort(Sort.ACCURACY)
-                .pageable(pageableDto)
+                .limit(pageableCount)
+                .offset(totalCount)
                 .build();
         // result
 

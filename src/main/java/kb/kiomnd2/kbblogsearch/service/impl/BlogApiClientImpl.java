@@ -23,7 +23,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 @Primary
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 @Service
-public class BlogApiClient implements kb.kiomnd2.kbblogsearch.service.BlogApiClient {
+public class BlogApiClientImpl implements kb.kiomnd2.kbblogsearch.service.BlogApiClient {
 
     private final RestTemplate restTemplate;
 
@@ -44,7 +44,7 @@ public class BlogApiClient implements kb.kiomnd2.kbblogsearch.service.BlogApiCli
         headers.set(HttpHeaders.AUTHORIZATION, kakaoApiProperty.getApiKey());
         headers.set(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
         HttpEntity<KakaoBlogResponseDto> entity = new HttpEntity<>(headers);
-
+        System.out.println(uriComponents.toUri());
         try {
             KakaoBlogResponseDto response = restTemplate.exchange(uriComponents.toUri(),
                             HttpMethod.GET,

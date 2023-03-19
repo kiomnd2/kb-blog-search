@@ -21,8 +21,8 @@ public interface KakaoMapper extends BlogMapper<KakaoBlogResponseDto, KakaoBlogR
     @Mappings({
                     @Mapping(source = "keyword", target = "query"),
                     @Mapping(source = "sort", target = "sort", qualifiedByName = "sortToString"),
-                    @Mapping(source = "pageable.offset", target = "page"),
-                    @Mapping(source = "pageable.limit", target = "size")
+                    @Mapping(source = "offset", target = "page"),
+                    @Mapping(source = "limit", target = "size")
             })
     KakaoBlogRequestDto fromRequest(BlogSearchRequestDto requestDto);
 
@@ -38,6 +38,7 @@ public interface KakaoMapper extends BlogMapper<KakaoBlogResponseDto, KakaoBlogR
 
     @Named("sortToString")
     static String sortToString(Sort sort) {
+        if (sort == null) return "";
         return sort.getCodeName();
     }
 }

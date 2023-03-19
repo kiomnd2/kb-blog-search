@@ -21,8 +21,8 @@ public interface NaverMapper extends BlogMapper<NaverBlogResponseDto, NaverBlogR
     @Mappings({
                     @Mapping(source = "keyword", target = "query"),
                     @Mapping(source = "sort", target = "sort", qualifiedByName = "sortToString"),
-                    @Mapping(source = "pageable.offset", target = "start"),
-                    @Mapping(source = "pageable.limit", target = "display")
+                    @Mapping(source = "offset", target = "start"),
+                    @Mapping(source = "limit", target = "display")
             })
     NaverBlogRequestDto fromRequest(BlogSearchRequestDto requestDto);
 

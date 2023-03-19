@@ -2,7 +2,7 @@ package kb.kiomnd2.kbblogsearch.service.impl;
 
 import kb.kiomnd2.kbblogsearch.dto.*;
 import kb.kiomnd2.kbblogsearch.enums.Sort;
-import kb.kiomnd2.kbblogsearch.jpa.entity.Search;
+import kb.kiomnd2.kbblogsearch.jpa.domain.SearchEntity;
 import kb.kiomnd2.kbblogsearch.jpa.repository.SearchRepository;
 import kb.kiomnd2.kbblogsearch.service.BlogApiClient;
 import org.junit.jupiter.api.DisplayName;
@@ -20,7 +20,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 
 @ExtendWith(MockitoExtension.class)
-class BlogSearchServiceImplTest {
+class BlogSearchServiceImplTestEntity {
 
     @InjectMocks
     private BlogSearchServiceImpl blogSearchService;
@@ -49,10 +49,8 @@ class BlogSearchServiceImplTest {
 
         BlogSearchRequestDto request = BlogSearchRequestDto.builder()
                 .keyword(keyWord)
-                .pageable(PageableDto.builder()
-                        .limit(10)
-                        .offset(2)
-                        .build())
+                .limit(10)
+                .offset(2)
                 .sort(accuracy)
                 .build();
 
@@ -81,11 +79,11 @@ class BlogSearchServiceImplTest {
     @Test
     void searchListTest_success() throws Exception {
 
-        List<Search> list = List.of(new Search("test1", 5, LocalDateTime.now()),
-                new Search("test2", 4, LocalDateTime.now()),
-                new Search("test3", 3, LocalDateTime.now()),
-                new Search("test4", 2, LocalDateTime.now()),
-                new Search("test5", 1, LocalDateTime.now()));
+        List<SearchEntity> list = List.of(new SearchEntity("test1", 5, LocalDateTime.now()),
+                new SearchEntity("test2", 4, LocalDateTime.now()),
+                new SearchEntity("test3", 3, LocalDateTime.now()),
+                new SearchEntity("test4", 2, LocalDateTime.now()),
+                new SearchEntity("test5", 1, LocalDateTime.now()));
 
 
         given(searchRepository.findTop10ByOrderByCountDesc()).willReturn(list);

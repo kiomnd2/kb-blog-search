@@ -1,4 +1,4 @@
-package kb.kiomnd2.kbblogsearch.jpa.entity;
+package kb.kiomnd2.kbblogsearch.jpa.domain;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-public class Search {
+public class SearchEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,7 +26,7 @@ public class Search {
     private Long version;
 
     @Builder
-    public Search(String keyword, long count, LocalDateTime createAt) {
+    public SearchEntity(String keyword, long count, LocalDateTime createAt) {
         this.keyword = keyword;
         this.count = count;
         this.createAt = createAt;

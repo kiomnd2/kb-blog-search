@@ -14,6 +14,6 @@ public enum Sort {
 
     public static Sort getSortByCode(final String code) {
         Sort[] values = values();
-        return Arrays.stream(values).filter(sort -> code.equals(sort.codeName)).findFirst().orElse(ACCURACY);
+        return Arrays.stream(values).filter(sort -> code.equalsIgnoreCase(sort.codeName)).findFirst().orElse(ACCURACY);
     }
 }

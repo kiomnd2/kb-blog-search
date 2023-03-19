@@ -23,6 +23,8 @@ public class ApiUtil {
                     map.add(key, (String) value);
                 } else if (value instanceof Sort) {
                     map.add(key, ((Sort) value).getCodeName());
+                } else {
+                    map.add(key, String.valueOf(value));
                 }
             } catch (Exception ignore) {}
         }

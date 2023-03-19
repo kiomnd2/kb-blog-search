@@ -1,6 +1,5 @@
 package kb.kiomnd2.kbblogsearch.dto;
 
-import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import kb.kiomnd2.kbblogsearch.dto.converter.SortDeserializer;
 import kb.kiomnd2.kbblogsearch.enums.Sort;
@@ -22,7 +21,9 @@ public class BlogSearchRequestDto {
     @JsonDeserialize(using = SortDeserializer.class)
     private final Sort sort;
 
-    // 페이징 정보
-    @JsonUnwrapped
-    private final PageableDto pageable;
+    // 시작위치
+    private final Integer offset;
+
+    // 제한위치
+    private final Integer limit;
 }

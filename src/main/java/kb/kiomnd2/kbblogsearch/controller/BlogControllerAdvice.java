@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class BlogControllerAdvice {
 
-    @ExceptionHandler(value = RuntimeException.class)
-    public ResponseEntity<ResponseDto<String>> runtimeExceptionHandler(RuntimeException e) {
+    @ExceptionHandler(value = Exception.class)
+    public ResponseEntity<ResponseDto<String>> runtimeExceptionHandler(Exception e) {
         e.printStackTrace();
         return ResponseEntity.ok(ResponseDto.of(e.getMessage()));
     }

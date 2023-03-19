@@ -1,14 +1,14 @@
 package kb.kiomnd2.kbblogsearch.jpa.repository;
 
-import kb.kiomnd2.kbblogsearch.jpa.entity.Search;
+import kb.kiomnd2.kbblogsearch.jpa.domain.SearchEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface SearchRepository extends JpaRepository<Search, Long> {
+public interface SearchRepository extends JpaRepository<SearchEntity, Long> {
 
-    Optional<Search> findByKeyword(String keyword);
+    Optional<SearchEntity> findByKeyword(String keyword);
 
-    List<Search> findTop10ByOrderByCountDesc();
+    List<SearchEntity> findTop10ByOrderByCountDesc();
 }

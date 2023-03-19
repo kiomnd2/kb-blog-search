@@ -3,7 +3,7 @@ package kb.kiomnd2.kbblogsearch.service.impl;
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchRequestDto;
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchResultDto;
 import kb.kiomnd2.kbblogsearch.dto.SearchDto;
-import kb.kiomnd2.kbblogsearch.jpa.entity.Search;
+import kb.kiomnd2.kbblogsearch.jpa.domain.SearchEntity;
 import kb.kiomnd2.kbblogsearch.jpa.repository.SearchRepository;
 import kb.kiomnd2.kbblogsearch.mapper.entity.SearchMapper;
 import kb.kiomnd2.kbblogsearch.service.BlogApiClient;
@@ -39,9 +39,9 @@ public class BlogSearchServiceImpl implements BlogSearchService {
 
     @Transactional
     public void updateSearch(String keyword) {
-        searchRepository.findByKeyword(keyword).ifPresentOrElse(Search::plusCount,
+        searchRepository.findByKeyword(keyword).ifPresentOrElse(SearchEntity::plusCount,
                 () -> searchRepository.save(
-                Search.builder()
+                SearchEntity.builder()
                         .keyword(keyword)
                         .count(1)
                         .createAt(LocalDateTime.now())
