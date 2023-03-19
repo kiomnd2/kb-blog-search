@@ -1,7 +1,6 @@
 package kb.kiomnd2.kbblogsearch.mapper.naver;
 
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchItemDto;
-import kb.kiomnd2.kbblogsearch.dto.kakao.DocumentsDto;
 import kb.kiomnd2.kbblogsearch.dto.naver.NaverBlogResponseItemDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

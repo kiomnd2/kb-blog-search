@@ -1,7 +1,7 @@
 package kb.kiomnd2.kbblogsearch.service.impl;
 
-import kb.kiomnd2.kbblogsearch.dto.BlogSearchResultDto;
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchRequestDto;
+import kb.kiomnd2.kbblogsearch.dto.BlogSearchResultDto;
 import kb.kiomnd2.kbblogsearch.dto.kakao.KakaoBlogResponseDto;
 import kb.kiomnd2.kbblogsearch.mapper.kakao.KakaoMapper;
 import kb.kiomnd2.kbblogsearch.property.KakaoApiProperty;

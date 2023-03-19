@@ -10,8 +10,6 @@ import kb.kiomnd2.kbblogsearch.property.NaverApiProperty;
 import kb.kiomnd2.kbblogsearch.service.ErrorHandleService;
 import kb.kiomnd2.kbblogsearch.utils.ApiUtil;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.context.annotation.Conditional;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;

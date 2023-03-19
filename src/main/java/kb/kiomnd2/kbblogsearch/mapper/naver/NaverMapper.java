@@ -2,13 +2,10 @@ package kb.kiomnd2.kbblogsearch.mapper.naver;
 
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchRequestDto;
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchResultDto;
-import kb.kiomnd2.kbblogsearch.dto.kakao.KakaoBlogRequestDto;
-import kb.kiomnd2.kbblogsearch.dto.kakao.KakaoBlogResponseDto;
 import kb.kiomnd2.kbblogsearch.dto.naver.NaverBlogRequestDto;
 import kb.kiomnd2.kbblogsearch.dto.naver.NaverBlogResponseDto;
 import kb.kiomnd2.kbblogsearch.enums.Sort;
 import kb.kiomnd2.kbblogsearch.mapper.BlogMapper;
-import kb.kiomnd2.kbblogsearch.mapper.kakao.DocumentMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;

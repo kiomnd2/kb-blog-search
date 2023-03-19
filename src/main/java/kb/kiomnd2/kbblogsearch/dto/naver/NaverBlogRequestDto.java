@@ -1,6 +1,5 @@
 package kb.kiomnd2.kbblogsearch.dto.naver;
 
-import kb.kiomnd2.kbblogsearch.enums.Sort;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
