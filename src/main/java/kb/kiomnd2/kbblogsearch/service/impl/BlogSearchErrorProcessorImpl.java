@@ -18,26 +18,13 @@ import java.util.Set;
 @Service
 public class BlogSearchErrorProcessorImpl implements BlogSearchErrorProcessor {
 
-    private final Set<ErrorHandleService> errorHandleService;
+    private final ErrorHandleService errorHandleService;
 
     private final BlogResultMakeService resultMakeService;
 
     @Override
     public BlogSearchResultDto process(BlogSearchRequestDto request) {
-        int errorCount = 0;
-        for (ErrorHandleService errorHandleService : errorHandleService) {
-            try {
-                ResponseMark handler = errorHandleService.handler(request);
-                return resultMakeService.make(handler);
-            } catch (Exception e) {
-                e.printStackTrace();
-                errorCount++;
-                if (errorCount < 3) {
-                    continue;
-                }
-                throw new BlogApiRequestException();
-            }
-        }
-        return BlogSearchResultDto.empty();
+        ResponseMark handler = errorHandleService.handler(request);
+        return resultMakeService.make(handler);
     }
 }
