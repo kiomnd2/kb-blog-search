@@ -5,12 +5,13 @@ import kb.kiomnd2.kbblogsearch.dto.BlogSearchResultDto;
 import kb.kiomnd2.kbblogsearch.dto.ResponseMark;
 import kb.kiomnd2.kbblogsearch.exception.BlogResultMakeException;
 import kb.kiomnd2.kbblogsearch.service.BlogResultMaker;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.Set;
 
-@RequiredArgsConstructor
+@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 @Component
 public class BlogResultMakerImpl implements BlogResultMaker {
 

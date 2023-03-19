@@ -1,12 +1,10 @@
 package kb.kiomnd2.kbblogsearch.dto;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @ToString
+@Builder
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class PageableDto {
 
