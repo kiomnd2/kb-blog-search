@@ -37,9 +37,7 @@ public class BlogSearchErrorProcessorImpl implements BlogSearchErrorProcessor {
                 }
                 throw new BlogApiRequestException();
             }
-
         }
-
-        return null;
+        return BlogSearchResultDto.empty();
     }
 }

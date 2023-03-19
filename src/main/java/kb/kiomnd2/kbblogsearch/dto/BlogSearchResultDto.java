@@ -19,4 +19,12 @@ public class BlogSearchResultDto {
     private final Integer pageableCount;
 
     private final List<BlogSearchItemDto> items;
+
+    public static BlogSearchResultDto empty() {
+        return BlogSearchResultDto.builder()
+                .totalCount(0)
+                .pageableCount(0)
+                .items(new ArrayList<>())
+                .build();
+    }
 }

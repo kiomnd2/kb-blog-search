@@ -5,7 +5,6 @@ import kb.kiomnd2.kbblogsearch.dto.BlogSearchRequestDto;
 import kb.kiomnd2.kbblogsearch.dto.kakao.KakaoBlogResponseDto;
 import kb.kiomnd2.kbblogsearch.mapper.kakao.KakaoMapper;
 import kb.kiomnd2.kbblogsearch.property.KakaoApiProperty;
-import kb.kiomnd2.kbblogsearch.service.BlogApiClient;
 import kb.kiomnd2.kbblogsearch.service.BlogResultMakeService;
 import kb.kiomnd2.kbblogsearch.service.BlogSearchErrorProcessor;
 import kb.kiomnd2.kbblogsearch.utils.ApiUtil;
@@ -24,7 +23,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 @Primary
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 @Service
-public class KakaoBlogApiClient implements BlogApiClient {
+public class BlogApiClient implements kb.kiomnd2.kbblogsearch.service.BlogApiClient {
 
     private final RestTemplate restTemplate;
 
