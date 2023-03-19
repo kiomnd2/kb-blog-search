@@ -13,6 +13,7 @@ public enum Sort {
     private final String codeName;
 
     public static Sort getSortByCode(final String code) {
+        if (code == null) return Sort.ACCURACY;
         Sort[] values = values();
         return Arrays.stream(values).filter(sort -> code.equalsIgnoreCase(sort.codeName)).findFirst().orElse(ACCURACY);
     }

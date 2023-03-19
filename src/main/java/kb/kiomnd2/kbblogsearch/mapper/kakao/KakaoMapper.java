@@ -38,7 +38,7 @@ public interface KakaoMapper extends BlogMapper<KakaoBlogResponseDto, KakaoBlogR
 
     @Named("sortToString")
     static String sortToString(Sort sort) {
-        if (sort == null) return "";
+        if (sort == null) return null;
         return sort.getCodeName();
     }
 }

@@ -22,8 +22,10 @@ public class SearchEntity {
 
     private LocalDateTime createAt;
 
+/*
     @Version
-    private Long version;
+    private int version;
+*/
 
     @Builder
     public SearchEntity(String keyword, long count, LocalDateTime createAt) {

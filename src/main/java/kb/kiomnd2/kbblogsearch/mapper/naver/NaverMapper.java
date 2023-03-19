@@ -38,6 +38,7 @@ public interface NaverMapper extends BlogMapper<NaverBlogResponseDto, NaverBlogR
 
     @Named("sortToString")
     static String sortToString(Sort sort) {
+        if (sort == null) return "";
         if (sort.equals(Sort.ACCURACY)) return "sim";
         else if (sort.equals(Sort.RECENCY)) return "date";
         return null;

@@ -5,11 +5,15 @@ import kb.kiomnd2.kbblogsearch.dto.BlogSearchResultDto;
 import kb.kiomnd2.kbblogsearch.dto.kakao.KakaoBlogResponseDto;
 import kb.kiomnd2.kbblogsearch.mapper.kakao.KakaoMapper;
 import kb.kiomnd2.kbblogsearch.property.KakaoApiProperty;
+import kb.kiomnd2.kbblogsearch.service.BlogApiClient;
 import kb.kiomnd2.kbblogsearch.service.BlogResultMakeService;
 import kb.kiomnd2.kbblogsearch.service.BlogSearchErrorProcessor;
 import kb.kiomnd2.kbblogsearch.utils.ApiUtil;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Primary;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -20,10 +24,10 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
-@Primary
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 @Service
-public class BlogApiClientImpl implements kb.kiomnd2.kbblogsearch.service.BlogApiClient {
+public class BlogApiClientImpl implements BlogApiClient {
+
 
     private final RestTemplate restTemplate;
 
@@ -44,7 +48,6 @@ public class BlogApiClientImpl implements kb.kiomnd2.kbblogsearch.service.BlogAp
         headers.set(HttpHeaders.AUTHORIZATION, kakaoApiProperty.getApiKey());
         headers.set(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
         HttpEntity<KakaoBlogResponseDto> entity = new HttpEntity<>(headers);
-        System.out.println(uriComponents.toUri());
         try {
             KakaoBlogResponseDto response = restTemplate.exchange(uriComponents.toUri(),
                             HttpMethod.GET,

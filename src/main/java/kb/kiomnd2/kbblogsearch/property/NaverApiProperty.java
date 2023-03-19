@@ -2,22 +2,23 @@ package kb.kiomnd2.kbblogsearch.property;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.ConstructorBinding;
 
 import java.nio.charset.Charset;
 
 @Getter
-@RequiredArgsConstructor
+@Setter
 @ConstructorBinding
 @ConfigurationProperties(prefix = "naver.blog")
 public class NaverApiProperty {
 
-    private final String url;
+    private String url;
 
-    private final String clientId;
+    private String clientId;
 
-    private final String secret;
+    private String secret;
 
-    private final Charset charset;
+    private Charset charset;
 }

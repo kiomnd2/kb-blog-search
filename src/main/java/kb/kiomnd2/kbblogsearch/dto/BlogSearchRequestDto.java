@@ -15,15 +15,15 @@ import lombok.ToString;
 public class BlogSearchRequestDto {
 
     // 검색 키워드
-    private final String keyword;
+    private String keyword;
 
     // sort 옵션
     @JsonDeserialize(using = SortDeserializer.class)
-    private final Sort sort;
+    private Sort sort;
 
     // 시작위치
-    private final Integer offset;
+    private Integer offset;
 
     // 제한위치
-    private final Integer limit;
+    private Integer limit;
 }

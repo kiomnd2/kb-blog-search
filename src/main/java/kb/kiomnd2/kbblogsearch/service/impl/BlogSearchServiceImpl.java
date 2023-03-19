@@ -7,6 +7,7 @@ import kb.kiomnd2.kbblogsearch.jpa.domain.SearchEntity;
 import kb.kiomnd2.kbblogsearch.jpa.repository.SearchRepository;
 import kb.kiomnd2.kbblogsearch.mapper.entity.SearchMapper;
 import kb.kiomnd2.kbblogsearch.service.BlogApiClient;
+import kb.kiomnd2.kbblogsearch.service.BlogDataProcessService;
 import kb.kiomnd2.kbblogsearch.service.BlogSearchService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -24,11 +25,13 @@ public class BlogSearchServiceImpl implements BlogSearchService {
 
     private final SearchRepository searchRepository;
 
+    private final BlogDataProcessService dataProcessService;
+
     @Transactional
     @Override
     public BlogSearchResultDto search(BlogSearchRequestDto request) {
         BlogSearchResultDto searchResultDto = client.sendRequest(request);
-        this.updateSearch(request.getKeyword());
+        dataProcessService.processData(request.getKeyword());
         return searchResultDto;
     }
 
@@ -37,15 +40,5 @@ public class BlogSearchServiceImpl implements BlogSearchService {
         return SearchMapper.INSTANCE.toListDto(searchRepository.findTop10ByOrderByCountDesc());
     }
 
-    @Transactional
-    public void updateSearch(String keyword) {
-        searchRepository.findByKeyword(keyword).ifPresentOrElse(SearchEntity::plusCount,
-                () -> searchRepository.save(
-                SearchEntity.builder()
-                        .keyword(keyword)
-                        .count(1)
-                        .createAt(LocalDateTime.now())
-                        .build()));
 
-    }
 }

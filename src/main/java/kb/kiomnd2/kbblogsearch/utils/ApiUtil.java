@@ -19,6 +19,7 @@ public class ApiUtil {
             try {
                 String key = declaredField.getName();
                 Object value = declaredField.get(request);
+                if (value == null) continue;
                 if (value instanceof String) {
                     map.add(key, (String) value);
                 } else if (value instanceof Sort) {
