@@ -26,6 +26,7 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'com.h2database:h2'
     implementation group: 'it.ozimov', name: 'embedded-redis', version: '0.7.1'
+    implementation 'org.redisson:redisson-spring-boot-starter:3.17.4'
     annotationProcessor 'org.projectlombok:lombok'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
