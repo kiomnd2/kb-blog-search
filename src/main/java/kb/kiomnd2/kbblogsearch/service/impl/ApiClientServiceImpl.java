@@ -9,6 +9,7 @@ import kb.kiomnd2.kbblogsearch.exception.BlogException;
 import kb.kiomnd2.kbblogsearch.service.ApiClientService;
 import kb.kiomnd2.kbblogsearch.service.BlogResultMakeService;
 import kb.kiomnd2.kbblogsearch.service.ErrorHandleService;
+import kb.kiomnd2.kbblogsearch.service.impl.kakao.KakaoApiClientImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ import java.util.List;
 @Service
 public class ApiClientServiceImpl implements ApiClientService {
 
-    private final ApiClient<NaverBlogResponseDto> client;
+    private final ApiClient<KakaoBlogResponseDto> client;
 
     private final List<ErrorHandleService> errorHandleServices;
 
