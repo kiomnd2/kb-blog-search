@@ -2,10 +2,12 @@ package kb.kiomnd2.kbblogsearch.utils;
 
 import kb.kiomnd2.kbblogsearch.enums.Sort;
 import org.assertj.core.api.Assertions;
+import org.springframework.context.annotation.Profile;
 import org.springframework.util.MultiValueMap;
 
 import java.lang.reflect.Field;
 
+@Profile("test")
 class ApiUtilTest {
 
     @org.junit.jupiter.api.Test

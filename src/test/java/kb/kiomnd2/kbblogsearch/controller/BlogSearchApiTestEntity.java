@@ -1,11 +1,13 @@
 package kb.kiomnd2.kbblogsearch.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import kb.kiomnd2.kbblogsearch.codes.ErrorCode;
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchItemDto;
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchRequestDto;
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchResultDto;
 import kb.kiomnd2.kbblogsearch.dto.request.SearchDto;
 import kb.kiomnd2.kbblogsearch.enums.Sort;
+import kb.kiomnd2.kbblogsearch.exception.BlogException;
 import kb.kiomnd2.kbblogsearch.service.BlogSearchService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -84,6 +86,47 @@ class BlogSearchApiTestEntity {
                 .andExpect(jsonPath("data.items[0].bloggerName").value(blogName))
                 .andExpect(jsonPath("data.items[0].createAt").value(createAt));
     }
+
+
+    @DisplayName("블로그 검색 API valid exception - 실패")
+    @Test
+    void requestSearchBlog_valid_fail() throws Exception {
+
+        BlogSearchRequestDto request = BlogSearchRequestDto.builder()
+                .build();
+        // result
+
+        mockMvc.perform(post("/search/blog")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(mapper.writeValueAsString(request)))
+                .andDo(print())
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("result").value("FAIL"))
+                .andExpect(jsonPath("data").value("Request Error keyword=null (keyword 는 필수값입니다)"))
+                .andExpect(jsonPath("errorCode").value(ErrorCode.INVALID_PARAMETER.name()));
+    }
+
+    @DisplayName("블로그 검색 API business Error - 실패")
+    @Test
+    void requestSearchBlog_businessError_fail() throws Exception {
+
+        BlogSearchRequestDto request = BlogSearchRequestDto.builder()
+                .keyword("keyword")
+                .build();
+        // result
+
+        given(blogSearchService.search(any())).willThrow(new BlogException(ErrorCode.BLOG_RESULT_MAKE_ERROR));
+
+        mockMvc.perform(post("/search/blog")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(mapper.writeValueAsString(request)))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("result").value("FAIL"))
+                .andExpect(jsonPath("data").value(ErrorCode.BLOG_RESULT_MAKE_ERROR.getErrorMessage()))
+                .andExpect(jsonPath("errorCode").value(ErrorCode.BLOG_RESULT_MAKE_ERROR.name()));
+    }
+
 
     @DisplayName("블로그 목록 최신순 조회 API - 성공")
     @Test
