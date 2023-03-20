@@ -3,17 +3,11 @@ package kb.kiomnd2.kbblogsearch.service;
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchItemDto;
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchRequestDto;
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchResultDto;
-import kb.kiomnd2.kbblogsearch.dto.kakao.DocumentsDto;
 import kb.kiomnd2.kbblogsearch.dto.kakao.KakaoBlogResponseDto;
-import kb.kiomnd2.kbblogsearch.dto.kakao.MetaDto;
-import kb.kiomnd2.kbblogsearch.dto.naver.NaverBlogResponseDto;
-import kb.kiomnd2.kbblogsearch.dto.naver.NaverBlogResponseItemDto;
-import kb.kiomnd2.kbblogsearch.exception.BlogException;
 import kb.kiomnd2.kbblogsearch.service.impl.ApiClient;
 import kb.kiomnd2.kbblogsearch.service.impl.ApiClientServiceImpl;
 import kb.kiomnd2.kbblogsearch.service.impl.BlogResultMakeServiceImpl;
 import kb.kiomnd2.kbblogsearch.service.impl.naver.NaverApiClientImpl;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -27,7 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 
