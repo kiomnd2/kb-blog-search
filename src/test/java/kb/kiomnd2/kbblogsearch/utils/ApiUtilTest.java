@@ -21,12 +21,16 @@ class ApiUtilTest {
         for (Field declaredField : declaredFields) {
             String key = declaredField.getName();
             String value = multiValueMap.getFirst(key);
-            if (key.equals("name")) {
-                Assertions.assertThat(value).isEqualTo(name);
-            } else if (key.equals("sort")) {
-                Assertions.assertThat(value).isEqualTo(accuracy.getCodeName());
-            } else {
-                Assertions.assertThat(value).isEqualTo(String.valueOf(num));
+            switch (key) {
+                case "name":
+                    Assertions.assertThat(value).isEqualTo(name);
+                    break;
+                case "sort":
+                    Assertions.assertThat(value).isEqualTo(accuracy.getCodeName());
+                    break;
+                case "num":
+                    Assertions.assertThat(value).isEqualTo(String.valueOf(num));
+                    break;
             }
         }
     }

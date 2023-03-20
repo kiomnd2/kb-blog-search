@@ -1,7 +1,9 @@
 package kb.kiomnd2.kbblogsearch.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import kb.kiomnd2.kbblogsearch.dto.*;
+import kb.kiomnd2.kbblogsearch.dto.BlogSearchItemDto;
+import kb.kiomnd2.kbblogsearch.dto.BlogSearchRequestDto;
+import kb.kiomnd2.kbblogsearch.dto.BlogSearchResultDto;
 import kb.kiomnd2.kbblogsearch.dto.request.SearchDto;
 import kb.kiomnd2.kbblogsearch.enums.Sort;
 import kb.kiomnd2.kbblogsearch.service.BlogSearchService;
@@ -63,7 +65,6 @@ class BlogSearchApiTestEntity {
 
         BlogSearchResultDto result = BlogSearchResultDto.builder()
                 .totalCount(totalCount)
-                .pageableCount(pageableCount)
                 .items(List.of(
                         new BlogSearchItemDto(title, blogLink, blogName, content, createAt)
                 ))
@@ -79,7 +80,6 @@ class BlogSearchApiTestEntity {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("data.totalCount").value(totalCount))
                 .andExpect(jsonPath("result").value("SUCCESS"))
-                .andExpect(jsonPath("data.pageableCount").value(pageableCount))
                 .andExpect(jsonPath("data.items[0].blogLink").value(blogLink))
                 .andExpect(jsonPath("data.items[0].bloggerName").value(blogName))
                 .andExpect(jsonPath("data.items[0].createAt").value(createAt));

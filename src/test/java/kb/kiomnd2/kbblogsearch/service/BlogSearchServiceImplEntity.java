@@ -5,9 +5,9 @@ import kb.kiomnd2.kbblogsearch.dto.BlogSearchRequestDto;
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchResultDto;
 import kb.kiomnd2.kbblogsearch.dto.request.SearchDto;
 import kb.kiomnd2.kbblogsearch.enums.Sort;
+import kb.kiomnd2.kbblogsearch.exception.BlogException;
 import kb.kiomnd2.kbblogsearch.jpa.domain.SearchEntity;
 import kb.kiomnd2.kbblogsearch.jpa.repository.SearchRepository;
-import kb.kiomnd2.kbblogsearch.service.impl.ApiClient;
 import kb.kiomnd2.kbblogsearch.service.impl.BlogSearchServiceImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,23 +20,25 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 
 @ExtendWith(MockitoExtension.class)
-class BlogSearchServiceImplTestEntity {
+class BlogSearchServiceImplEntity {
 
     @InjectMocks
     private BlogSearchServiceImpl blogSearchService;
 
     @Mock
-    private ApiClient client;
+    private ApiClientService client;
 
     @Mock
     private BlogDataProcessService blogDataProcessService;
 
     @Mock
     private SearchRepository searchRepository;
+
 
 
     @DisplayName("블로그 검색 Service - 성공")
@@ -61,25 +63,43 @@ class BlogSearchServiceImplTestEntity {
                 .sort(accuracy)
                 .build();
 
-
         BlogSearchResultDto result = BlogSearchResultDto.builder()
                 .totalCount(totalCount)
-                .pageableCount(pageableCount)
                 .items(List.of(
                         new BlogSearchItemDto(title, blogLink, blogName, content, createAt)
                 ))
                 .build();
 
-        given(client.sendRequest(any())).willReturn(result);
+        given(client.request(any())).willReturn(result);
 
         BlogSearchResultDto search = blogSearchService.search(request);
 
         assertThat(search.getTotalCount()).isEqualTo(search.getTotalCount());
-        assertThat(search.getPageableCount()).isEqualTo(pageableCount);
         assertThat(search.getItems().size()).isEqualTo(1);
         assertThat(search.getItems().get(0).getBloggerName()).isEqualTo(blogName);
         assertThat(search.getItems().get(0).getBlogLink()).isEqualTo(blogLink);
         assertThat(search.getItems().get(0).getCreateAt()).isEqualTo(createAt);
+    }
+
+    @DisplayName("블로그 검색 Service 리퀘스트중 오류 발생 - 실패")
+    @Test
+    void searchTest_RequestError_fail() throws Exception {
+        String keyWord = "keyTest";
+        Sort accuracy = Sort.ACCURACY;
+
+
+        BlogSearchRequestDto request = BlogSearchRequestDto.builder()
+                .keyword(keyWord)
+                .limit(10)
+                .offset(2)
+                .sort(accuracy)
+                .build();
+
+        given(client.request(any())).willThrow(BlogException.class);
+
+        assertThatThrownBy(() -> {
+            blogSearchService.search(request);
+        });
     }
 
     @DisplayName("많이 조회한 키워드 조회 - 성공")
