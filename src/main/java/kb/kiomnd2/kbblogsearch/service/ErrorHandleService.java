@@ -4,5 +4,7 @@ import kb.kiomnd2.kbblogsearch.dto.BlogSearchRequestDto;
 import kb.kiomnd2.kbblogsearch.dto.maker.ResponseMark;
 
 public interface ErrorHandleService {
-    ResponseMark handler(BlogSearchRequestDto request);
+
+    ResponseMark handle(BlogSearchRequestDto blogSearchResultDto);
+
 }

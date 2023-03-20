@@ -1,7 +1,7 @@
 package kb.kiomnd2.kbblogsearch.controller;
 
 import kb.kiomnd2.kbblogsearch.codes.ErrorCode;
-import kb.kiomnd2.kbblogsearch.dto.ResponseDto;
+import kb.kiomnd2.kbblogsearch.dto.response.ResponseDto;
 import kb.kiomnd2.kbblogsearch.exception.BlogException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.NestedExceptionUtils;

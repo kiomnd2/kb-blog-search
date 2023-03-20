@@ -1,10 +1,8 @@
 package kb.kiomnd2.kbblogsearch.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import kb.kiomnd2.kbblogsearch.dto.BlogSearchItemDto;
-import kb.kiomnd2.kbblogsearch.dto.BlogSearchRequestDto;
-import kb.kiomnd2.kbblogsearch.dto.BlogSearchResultDto;
-import kb.kiomnd2.kbblogsearch.dto.SearchDto;
+import kb.kiomnd2.kbblogsearch.dto.*;
+import kb.kiomnd2.kbblogsearch.dto.request.SearchDto;
 import kb.kiomnd2.kbblogsearch.enums.Sort;
 import kb.kiomnd2.kbblogsearch.service.BlogSearchService;
 import org.junit.jupiter.api.DisplayName;
@@ -79,11 +77,12 @@ class BlogSearchApiTestEntity {
                 .content(mapper.writeValueAsString(request)))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("result.totalCount").value(totalCount))
-                .andExpect(jsonPath("result.pageableCount").value(pageableCount))
-                .andExpect(jsonPath("result.items[0].blogLink").value(blogLink))
-                .andExpect(jsonPath("result.items[0].bloggerName").value(blogName))
-                .andExpect(jsonPath("result.items[0].createAt").value(createAt));
+                .andExpect(jsonPath("data.totalCount").value(totalCount))
+                .andExpect(jsonPath("result").value("SUCCESS"))
+                .andExpect(jsonPath("data.pageableCount").value(pageableCount))
+                .andExpect(jsonPath("data.items[0].blogLink").value(blogLink))
+                .andExpect(jsonPath("data.items[0].bloggerName").value(blogName))
+                .andExpect(jsonPath("data.items[0].createAt").value(createAt));
     }
 
     @DisplayName("블로그 목록 최신순 조회 API - 성공")

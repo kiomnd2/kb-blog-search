@@ -1,4 +1,4 @@
-package kb.kiomnd2.kbblogsearch.service.impl;
+package kb.kiomnd2.kbblogsearch.service;
 
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchRequestDto;
 import kb.kiomnd2.kbblogsearch.enums.Sort;
@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BlogApiClientImplTest {
+class ApiClientTest {
 
     @Autowired
     BlogSearchService blogSearchService;

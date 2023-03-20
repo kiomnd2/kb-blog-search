@@ -1,13 +1,14 @@
-package kb.kiomnd2.kbblogsearch.service.impl;
+package kb.kiomnd2.kbblogsearch.service;
 
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchItemDto;
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchRequestDto;
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchResultDto;
-import kb.kiomnd2.kbblogsearch.dto.SearchDto;
+import kb.kiomnd2.kbblogsearch.dto.request.SearchDto;
 import kb.kiomnd2.kbblogsearch.enums.Sort;
 import kb.kiomnd2.kbblogsearch.jpa.domain.SearchEntity;
 import kb.kiomnd2.kbblogsearch.jpa.repository.SearchRepository;
-import kb.kiomnd2.kbblogsearch.service.BlogApiClient;
+import kb.kiomnd2.kbblogsearch.service.impl.ApiClient;
+import kb.kiomnd2.kbblogsearch.service.impl.BlogSearchServiceImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -29,7 +30,10 @@ class BlogSearchServiceImplTestEntity {
     private BlogSearchServiceImpl blogSearchService;
 
     @Mock
-    private BlogApiClient client;
+    private ApiClient client;
+
+    @Mock
+    private BlogDataProcessService blogDataProcessService;
 
     @Mock
     private SearchRepository searchRepository;

@@ -33,7 +33,6 @@ public class RedissonConfig {
         return Redisson.create(config);
     }
 
-
     @PostConstruct
     public void redisServer() throws IOException {
         redisServer = new RedisServer(redisPort);
