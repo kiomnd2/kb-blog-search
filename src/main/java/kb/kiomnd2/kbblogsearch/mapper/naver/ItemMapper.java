@@ -12,7 +12,7 @@ public interface ItemMapper {
     ItemMapper INSTANCE = Mappers.getMapper(ItemMapper.class);
 
     @Mappings({
-            @Mapping(source = "bloggerlink", target = "blogLink"),
+            @Mapping(source = "link", target = "blogLink"),
             @Mapping(source = "title", target = "title"),
             @Mapping(source = "description", target = "contents"),
             @Mapping(source = "bloggername", target = "bloggerName"),

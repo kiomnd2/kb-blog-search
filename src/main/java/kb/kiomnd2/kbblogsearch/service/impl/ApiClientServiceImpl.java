@@ -1,9 +1,10 @@
 package kb.kiomnd2.kbblogsearch.service.impl;
 
-import kb.kiomnd2.kbblogsearch.adapter.BlogResponseAdapter;
+import kb.kiomnd2.kbblogsearch.codes.ErrorCode;
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchRequestDto;
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchResultDto;
 import kb.kiomnd2.kbblogsearch.dto.kakao.KakaoBlogResponseDto;
+import kb.kiomnd2.kbblogsearch.dto.naver.NaverBlogResponseDto;
 import kb.kiomnd2.kbblogsearch.exception.BlogException;
 import kb.kiomnd2.kbblogsearch.service.ApiClientService;
 import kb.kiomnd2.kbblogsearch.service.BlogResultMakeService;
@@ -13,14 +14,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
 
 @Slf4j
 @RequiredArgsConstructor
 @Service
 public class ApiClientServiceImpl implements ApiClientService {
 
-    private final ApiClient<KakaoBlogResponseDto> client;
+    private final ApiClient<NaverBlogResponseDto> client;
 
     private final List<ErrorHandleService> errorHandleServices;
 
@@ -35,7 +35,7 @@ public class ApiClientServiceImpl implements ApiClientService {
             for (ErrorHandleService errorHandleService : errorHandleServices) {
                 return blogResultMakeService.make(errorHandleService.handle(request));
             }
+            throw new BlogException(ErrorCode.BLOG_RESULT_REQUEST_ERROR);
         }
-        throw new BlogException();
     }
 }

@@ -21,6 +21,11 @@ public class BlogException extends RuntimeException {
         this.errorCode = errorCode;
     }
 
+    public BlogException(ErrorCode errorCode, Throwable t) {
+        super(errorCode.getErrorMessage(), t);
+        this.errorCode = errorCode;
+    }
+
     public BlogException(String message, ErrorCode errorCode, Throwable t) {
         super(message, t);
         this.errorCode = errorCode;

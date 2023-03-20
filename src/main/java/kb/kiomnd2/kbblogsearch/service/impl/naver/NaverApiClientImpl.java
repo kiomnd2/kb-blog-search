@@ -6,12 +6,11 @@ import kb.kiomnd2.kbblogsearch.dto.kakao.KakaoBlogResponseDto;
 import kb.kiomnd2.kbblogsearch.dto.naver.NaverBlogResponseDto;
 import kb.kiomnd2.kbblogsearch.mapper.naver.NaverMapper;
 import kb.kiomnd2.kbblogsearch.property.NaverApiProperty;
-import kb.kiomnd2.kbblogsearch.service.impl.ApiClient;
 import kb.kiomnd2.kbblogsearch.service.ErrorHandleService;
+import kb.kiomnd2.kbblogsearch.service.impl.ApiClient;
 import kb.kiomnd2.kbblogsearch.utils.ApiUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -21,7 +20,6 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
-@Order(2)
 @Slf4j
 @RequiredArgsConstructor
 @Service
@@ -37,11 +35,16 @@ public class NaverApiClientImpl implements ApiClient<NaverBlogResponseDto>, Erro
     }
 
     @Override
-    public NaverBlogResponseDto sendRequest(BlogSearchRequestDto request) {
-        UriComponents uriComponents = UriComponentsBuilder.fromUriString(naverApiProperty.getUrl())
-                .queryParams(ApiUtil.parseParam(NaverMapper.INSTANCE.fromRequest(request)))
+    public UriComponents getUriComponent(BlogSearchRequestDto requestDto) {
+        return UriComponentsBuilder.fromUriString(naverApiProperty.getUrl())
+                .queryParams(ApiUtil.parseParam(NaverMapper.INSTANCE.fromRequest(requestDto)))
                 .encode(naverApiProperty.getCharset())
                 .build();
+    }
+
+    @Override
+    public NaverBlogResponseDto sendRequest(BlogSearchRequestDto request) {
+        UriComponents uriComponents = getUriComponent(request);
 
         log.info("request URI : {}", uriComponents.toUri());
 

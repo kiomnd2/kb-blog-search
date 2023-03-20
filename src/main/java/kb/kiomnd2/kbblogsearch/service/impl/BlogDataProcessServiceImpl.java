@@ -1,5 +1,6 @@
 package kb.kiomnd2.kbblogsearch.service.impl;
 
+import kb.kiomnd2.kbblogsearch.annotation.RedissonLock;
 import kb.kiomnd2.kbblogsearch.jpa.domain.SearchEntity;
 import kb.kiomnd2.kbblogsearch.jpa.repository.SearchRepository;
 import kb.kiomnd2.kbblogsearch.service.BlogDataProcessService;
@@ -15,6 +16,7 @@ public class BlogDataProcessServiceImpl implements BlogDataProcessService {
 
     private final SearchRepository searchRepository;
 
+    @RedissonLock
     @Override
     public void processData(String keyword) {
         this.updateSearch(keyword);

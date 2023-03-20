@@ -5,12 +5,10 @@ import kb.kiomnd2.kbblogsearch.dto.kakao.KakaoBlogResponseDto;
 import kb.kiomnd2.kbblogsearch.mapper.kakao.KakaoMapper;
 import kb.kiomnd2.kbblogsearch.property.KakaoApiProperty;
 import kb.kiomnd2.kbblogsearch.service.impl.ApiClient;
-import kb.kiomnd2.kbblogsearch.service.BlogResultMakeService;
 import kb.kiomnd2.kbblogsearch.utils.ApiUtil;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -20,7 +18,6 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
-@Order(1)
 @Slf4j
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 @Service
@@ -30,14 +27,17 @@ public class KakaoApiClientImpl implements ApiClient<KakaoBlogResponseDto> {
 
     private final KakaoApiProperty kakaoApiProperty;
 
-    private final BlogResultMakeService blogResultMakeService;
+    @Override
+    public UriComponents getUriComponent(BlogSearchRequestDto requestDto) {
+        return UriComponentsBuilder.fromUriString(kakaoApiProperty.getUrl())
+                .queryParams(ApiUtil.parseParam(KakaoMapper.INSTANCE.fromRequest(requestDto)))
+                .encode(kakaoApiProperty.getCharset())
+                .build();
+    }
 
     @Override
     public KakaoBlogResponseDto sendRequest(BlogSearchRequestDto blogSearchRequestDto) {
-        UriComponents uriComponents = UriComponentsBuilder.fromUriString(kakaoApiProperty.getUrl())
-                .queryParams(ApiUtil.parseParam(KakaoMapper.INSTANCE.fromRequest(blogSearchRequestDto)))
-                .encode(kakaoApiProperty.getCharset())
-                .build();
+        UriComponents uriComponents = this.getUriComponent(blogSearchRequestDto);
 
         log.info("request URI : {}", uriComponents.toUri());
 

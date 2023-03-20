@@ -30,7 +30,6 @@ public interface NaverMapper extends BlogMapper<NaverBlogResponseDto, NaverBlogR
     @Named("documentsToItems")
     @Mappings({
             @Mapping(source = "total", target = "totalCount"),
-            @Mapping(source = "start", target = "pageableCount"),
             @Mapping(source = "items", target = "items")
     })
     @Override
@@ -38,7 +37,7 @@ public interface NaverMapper extends BlogMapper<NaverBlogResponseDto, NaverBlogR
 
     @Named("sortToString")
     static String sortToString(Sort sort) {
-        if (sort == null) return "";
+        if (sort == null) return "sim";
         if (sort.equals(Sort.ACCURACY)) return "sim";
         else if (sort.equals(Sort.RECENCY)) return "date";
         return null;

@@ -13,7 +13,7 @@ import lombok.*;
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class MetaDto {
 
-    private String totalCount;
+    private Integer totalCount;
 
     private Integer pageableCount;
 
