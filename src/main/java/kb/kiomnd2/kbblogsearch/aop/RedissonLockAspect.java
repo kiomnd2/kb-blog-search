@@ -1,6 +1,8 @@
 package kb.kiomnd2.kbblogsearch.aop;
 
 import kb.kiomnd2.kbblogsearch.annotation.RedissonLock;
+import kb.kiomnd2.kbblogsearch.codes.ErrorCode;
+import kb.kiomnd2.kbblogsearch.exception.BlogException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -30,14 +32,14 @@ public class RedissonLockAspect {
         Method method = signature.getMethod();
         RedissonLock redissonLock = method.getAnnotation(RedissonLock.class);
 
-        String key = this.createKey(signature.getParameterNames(), joinPoint.getArgs(), redissonLock.key());
+        String key = joinPoint.getArgs()[0].toString();
 
         RLock rock = redissonClient.getLock(key);
 
         try {
             boolean isPossible = rock.tryLock(redissonLock.waitTime(), redissonLock.leaseTime(), redissonLock.timeUnit());
             if (!isPossible) {
-                return false;
+                throw new BlogException(ErrorCode.LOCK_ACQUISITION_ERROR);
             }
 
             log.info("Redisson Lock Key : {}", key);
@@ -50,17 +52,5 @@ public class RedissonLockAspect {
         }
     }
 
-    private String createKey(String[] parameterNames, Object[] args, String key) {
-        String resultKey = key;
 
-        /* key = parameterName */
-        for (int i = 0; i < parameterNames.length; i++) {
-            if (parameterNames[i].equals(key)) {
-                resultKey += args[i];
-                break;
-            }
-        }
-
-        return resultKey;
-    }
 }

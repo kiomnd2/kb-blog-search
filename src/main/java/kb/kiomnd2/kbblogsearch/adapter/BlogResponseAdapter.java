@@ -1,7 +1,7 @@
 package kb.kiomnd2.kbblogsearch.adapter;
 
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchResultDto;
-import kb.kiomnd2.kbblogsearch.dto.ResponseMark;
+import kb.kiomnd2.kbblogsearch.dto.maker.ResponseMark;
 
 public interface BlogResponseAdapter {
 

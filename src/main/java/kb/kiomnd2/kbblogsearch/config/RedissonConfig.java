@@ -15,6 +15,8 @@ import java.io.IOException;
 @Configuration(proxyBeanMethods = false)
 public class RedissonConfig {
 
+    private static final String REDISSON_HOST_PREFIX = "redis://";
+
     @Value("${spring.redis.host}")
     private String redisHost;
 
@@ -23,8 +25,6 @@ public class RedissonConfig {
 
     private RedisServer redisServer;
 
-    private static final String REDISSON_HOST_PREFIX = "redis://";
-
     @Bean
     public RedissonClient redissonClient() {
         Config config = new Config();
@@ -32,6 +32,7 @@ public class RedissonConfig {
                 .setAddress(REDISSON_HOST_PREFIX + redisHost + ":" + redisPort);
         return Redisson.create(config);
     }
+
 
     @PostConstruct
     public void redisServer() throws IOException {
@@ -45,4 +46,6 @@ public class RedissonConfig {
             redisServer.stop();
         }
     }
+
+
 }

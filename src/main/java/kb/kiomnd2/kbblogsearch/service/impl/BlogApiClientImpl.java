@@ -11,6 +11,7 @@ import kb.kiomnd2.kbblogsearch.service.BlogSearchErrorProcessor;
 import kb.kiomnd2.kbblogsearch.utils.ApiUtil;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -20,10 +21,10 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
+@Slf4j
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 @Service
 public class BlogApiClientImpl implements BlogApiClient {
-
 
     private final RestTemplate restTemplate;
 
@@ -52,7 +53,7 @@ public class BlogApiClientImpl implements BlogApiClient {
                     .getBody();
             return blogResultMakeService.make(response);
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("kakao Api server Error : {} " ,e.getMessage());
             return blogSearchErrorProcessor.process(blogSearchRequestDto);
         }
     }

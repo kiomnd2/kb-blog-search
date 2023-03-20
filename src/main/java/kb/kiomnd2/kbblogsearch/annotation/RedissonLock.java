@@ -9,8 +9,6 @@ import java.util.concurrent.TimeUnit;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface RedissonLock {
-    String key();
-
     TimeUnit timeUnit() default TimeUnit.SECONDS;
 
     long waitTime() default 5L;

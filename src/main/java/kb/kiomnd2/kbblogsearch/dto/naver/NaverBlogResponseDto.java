@@ -1,6 +1,6 @@
 package kb.kiomnd2.kbblogsearch.dto.naver;
 
-import kb.kiomnd2.kbblogsearch.dto.ResponseMark;
+import kb.kiomnd2.kbblogsearch.dto.maker.ResponseMark;
 import lombok.*;
 
 import java.util.List;

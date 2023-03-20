@@ -8,13 +8,15 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
 
+import javax.validation.constraints.NotEmpty;
+
 @Getter
 @Builder
 @ToString
 @AllArgsConstructor
 public class BlogSearchRequestDto {
 
-    // 검색 키워드
+    @NotEmpty(message = "keyword 는 필수값입니다")
     private String keyword;
 
     // sort 옵션
@@ -24,6 +26,5 @@ public class BlogSearchRequestDto {
     // 시작위치
     private Integer offset;
 
-    // 제한위치
     private Integer limit;
 }

@@ -2,8 +2,8 @@ package kb.kiomnd2.kbblogsearch.adapter.impl;
 
 import kb.kiomnd2.kbblogsearch.adapter.BlogResponseAdapter;
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchResultDto;
-import kb.kiomnd2.kbblogsearch.dto.ResponseMark;
 import kb.kiomnd2.kbblogsearch.dto.kakao.KakaoBlogResponseDto;
+import kb.kiomnd2.kbblogsearch.dto.maker.ResponseMark;
 import kb.kiomnd2.kbblogsearch.mapper.kakao.KakaoMapper;
 import org.springframework.stereotype.Component;
 

@@ -15,7 +15,7 @@ public class BlogDataProcessServiceImpl implements BlogDataProcessService {
 
     private final SearchRepository searchRepository;
 
-    @RedissonLock(key = "#keyword")
+    @RedissonLock
     @Override
     public void processData(String keyword) {
         this.updateSearch(keyword);

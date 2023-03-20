@@ -1,9 +1,10 @@
 package kb.kiomnd2.kbblogsearch.service.impl;
 
 import kb.kiomnd2.kbblogsearch.adapter.BlogResponseAdapter;
+import kb.kiomnd2.kbblogsearch.codes.ErrorCode;
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchResultDto;
-import kb.kiomnd2.kbblogsearch.dto.ResponseMark;
-import kb.kiomnd2.kbblogsearch.exception.BlogResultMakeException;
+import kb.kiomnd2.kbblogsearch.dto.maker.ResponseMark;
+import kb.kiomnd2.kbblogsearch.exception.BlogException;
 import kb.kiomnd2.kbblogsearch.service.BlogResultMakeService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,6 @@ public class BlogResultMakeServiceImpl implements BlogResultMakeService {
                 return adapter.handle(target);
             }
         }
-        throw new BlogResultMakeException();
+        throw new BlogException(ErrorCode.BLOG_RESULT_MAKE_ERROR);
     }
 }

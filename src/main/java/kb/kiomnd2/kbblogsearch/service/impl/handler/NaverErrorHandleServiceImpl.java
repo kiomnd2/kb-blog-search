@@ -1,6 +1,5 @@
-package kb.kiomnd2.kbblogsearch.service.impl;
+package kb.kiomnd2.kbblogsearch.service.impl.handler;
 
-import kb.kiomnd2.kbblogsearch.annotation.ConditionalErrorHandleOnNaver;
 import kb.kiomnd2.kbblogsearch.consts.NaverApiHeaderConst;
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchRequestDto;
 import kb.kiomnd2.kbblogsearch.dto.kakao.KakaoBlogResponseDto;
@@ -19,7 +18,6 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
-@ConditionalErrorHandleOnNaver
 @RequiredArgsConstructor
 @Service
 public class NaverErrorHandleServiceImpl implements ErrorHandleService {
