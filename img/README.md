@@ -46,6 +46,13 @@ GET /search/blog/list
 
 * Response
 
+## 테스트
+
+### Test Code
+![img.png](img2.png)
+
+### Jmeter 동시성
+![img.png](img.png)
 
 ## 문제해결 전략
 * 확장성
