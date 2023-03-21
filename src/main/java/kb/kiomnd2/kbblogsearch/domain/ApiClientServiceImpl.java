@@ -23,11 +23,11 @@ public class ApiClientServiceImpl implements ApiClientService {
     @Override
     public BlogSearchResultDto request(BlogSearchRequestDto request) {
         try {
-            return blogResultMakeService.make(client.sendRequest(request));
+            return blogResultMakeService.makeResponse(client.sendRequest(request));
         } catch (Exception e) {
             log.error(e.getMessage());
             for (BlogErrorHandleService errorHandleService : errorHandleServices) {
-                return blogResultMakeService.make(errorHandleService.handle(request));
+                return blogResultMakeService.makeResponse(errorHandleService.handle(request));
             }
             throw new BlogException(ErrorCode.BLOG_RESULT_REQUEST_ERROR);
         }

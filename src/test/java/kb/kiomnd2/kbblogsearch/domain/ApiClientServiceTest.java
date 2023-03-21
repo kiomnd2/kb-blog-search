@@ -1,6 +1,5 @@
 package kb.kiomnd2.kbblogsearch.domain;
 
-import kb.kiomnd2.kbblogsearch.domain.*;
 import kb.kiomnd2.kbblogsearch.domain.kakao.KakaoBlogResponseDto;
 import kb.kiomnd2.kbblogsearch.domain.naver.NaverApiClientImpl;
 import kb.kiomnd2.kbblogsearch.interfaces.BlogSearchRequestDto;
@@ -69,7 +68,7 @@ class ApiClientServiceTest {
                 .build();
 
 
-        given(blogResultMakeService.make(any())).willReturn(result);
+        given(blogResultMakeService.makeResponse(any())).willReturn(result);
 
         BlogSearchResultDto request1 = apiClientService.request(request);
 

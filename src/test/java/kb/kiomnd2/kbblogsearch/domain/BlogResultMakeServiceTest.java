@@ -1,8 +1,5 @@
 package kb.kiomnd2.kbblogsearch.domain;
 
-import kb.kiomnd2.kbblogsearch.domain.BlogResultMakeServiceImpl;
-import kb.kiomnd2.kbblogsearch.domain.BlogSearchItemDto;
-import kb.kiomnd2.kbblogsearch.domain.BlogSearchResultDto;
 import kb.kiomnd2.kbblogsearch.domain.adapter.BlogResponseAdapter;
 import kb.kiomnd2.kbblogsearch.domain.kakao.DocumentsDto;
 import kb.kiomnd2.kbblogsearch.domain.kakao.KakaoBlogResponseDto;
@@ -85,7 +82,7 @@ class BlogResultMakeServiceTest {
         given(blogResponseAdapter.supports(any())).willReturn(true);
         given(blogResponseAdapter.handle(any())).willReturn(r);
 
-        BlogSearchResultDto result = blogResultMakeService.make(kakaoBlogResponseDto);
+        BlogSearchResultDto result = blogResultMakeService.makeResponse(kakaoBlogResponseDto);
 
         Assertions.assertThat(result.getTotalCount()).isEqualTo(totalCount);
         assertThat(result.getItems().get(0).getBloggerName()).isEqualTo(blogname);

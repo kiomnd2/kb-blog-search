@@ -16,7 +16,7 @@ public class BlogResultMakeServiceImpl implements BlogResultMakeService {
     private final List<BlogResponseAdapter> adapters;
 
     @Override
-    public BlogSearchResultDto make(ResponseMark target) {
+    public BlogSearchResultDto makeResponse(ResponseMark target) {
         for (BlogResponseAdapter adapter : adapters) {
             if (adapter.supports(target)) {
                 return adapter.handle(target);
