@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @ToString
 @Builder
 @AllArgsConstructor
-public class SearchDto {
+public class KeywordDto {
     private String keyword;
     private long count;
     private LocalDateTime createAt;

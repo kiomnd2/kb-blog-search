@@ -1,8 +1,8 @@
 package kb.kiomnd2.kbblogsearch.concurreny;
 
 import kb.kiomnd2.kbblogsearch.domain.BlogDataProcessService;
-import kb.kiomnd2.kbblogsearch.domain.SearchEntity;
-import kb.kiomnd2.kbblogsearch.domain.SearchRepository;
+import kb.kiomnd2.kbblogsearch.domain.KeywordEntity;
+import kb.kiomnd2.kbblogsearch.domain.KeywordRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -23,7 +23,7 @@ public class ConcurrentCheckTest {
     BlogDataProcessService dataProcessService;
 
     @Autowired
-    SearchRepository repository;
+    KeywordRepository repository;
 
     @BeforeEach
     void setup() {
@@ -49,7 +49,7 @@ public class ConcurrentCheckTest {
         }
 
         latch.await();
-        SearchEntity search = repository.findByKeyword(keyword).get();
+        KeywordEntity search = repository.findByKeyword(keyword).get();
         Assertions.assertThat(search.getCount()).isEqualTo(numberOfThread);
         Assertions.assertThat(search.getKeyword()).isEqualTo(keyword);
 

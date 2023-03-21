@@ -1,11 +1,8 @@
 package kb.kiomnd2.kbblogsearch.application;
 
-import kb.kiomnd2.kbblogsearch.domain.ApiClientService;
-import kb.kiomnd2.kbblogsearch.domain.BlogDataProcessService;
-import kb.kiomnd2.kbblogsearch.domain.BlogSearchResultDto;
-import kb.kiomnd2.kbblogsearch.domain.SearchDto;
+import kb.kiomnd2.kbblogsearch.domain.*;
+import kb.kiomnd2.kbblogsearch.domain.KeywordDto;
 import kb.kiomnd2.kbblogsearch.domain.mapper.entity.SearchMapper;
-import kb.kiomnd2.kbblogsearch.domain.SearchRepository;
 import kb.kiomnd2.kbblogsearch.interfaces.BlogSearchRequestDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BlogSearchFacade {
 
-    private final SearchRepository searchRepository;
+    private final KeywordRepository keywordRepository;
     private final BlogDataProcessService dataProcessService;
     private final ApiClientService apiClientService;
 
@@ -29,7 +26,7 @@ public class BlogSearchFacade {
         return apiClientService.request(request);
     }
 
-    public List<SearchDto> getSearchList() {
-        return SearchMapper.INSTANCE.toListDto(searchRepository.findTop10ByOrderByCountDesc());
+    public List<KeywordDto> getSearchList() {
+        return SearchMapper.INSTANCE.toListDto(keywordRepository.findTop10ByOrderByCountDesc());
     }
 }

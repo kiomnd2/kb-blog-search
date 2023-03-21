@@ -1,16 +1,16 @@
 package kb.kiomnd2.kbblogsearch.domain.mapper.entity;
 
-import kb.kiomnd2.kbblogsearch.domain.SearchDto;
+import kb.kiomnd2.kbblogsearch.domain.KeywordDto;
+import kb.kiomnd2.kbblogsearch.domain.KeywordEntity;
 import kb.kiomnd2.kbblogsearch.domain.mapper.EntityMapper;
-import kb.kiomnd2.kbblogsearch.domain.SearchEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
 @Mapper
-public interface SearchMapper extends EntityMapper<SearchDto, SearchEntity> {
+public interface SearchMapper extends EntityMapper<KeywordDto, KeywordEntity> {
     SearchMapper INSTANCE = Mappers.getMapper(SearchMapper.class);
-    SearchDto toDto(SearchEntity entity);
-    List<SearchDto> toListDto(List<SearchEntity> list);
+    KeywordDto toDto(KeywordEntity entity);
+    List<KeywordDto> toListDto(List<KeywordEntity> list);
 }

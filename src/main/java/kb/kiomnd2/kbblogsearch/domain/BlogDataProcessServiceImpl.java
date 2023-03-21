@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 public class BlogDataProcessServiceImpl implements BlogDataProcessService {
 
-    private final SearchRepository searchRepository;
+    private final KeywordRepository keywordRepository;
 
     @RedissonLock
     @Override
@@ -22,11 +22,11 @@ public class BlogDataProcessServiceImpl implements BlogDataProcessService {
 
     @Transactional
     public void updateSearch(String keyword) {
-        searchRepository.findByKeyword(keyword).ifPresentOrElse((search) ->{
+        keywordRepository.findByKeyword(keyword).ifPresentOrElse((search) ->{
             search.plusCount();
-            searchRepository.save(search);
-            }, () -> searchRepository.save(
-                        SearchEntity.builder()
+            keywordRepository.save(search);
+            }, () -> keywordRepository.save(
+                        KeywordEntity.builder()
                                 .keyword(keyword)
                                 .count(1)
                                 .createAt(LocalDateTime.now())

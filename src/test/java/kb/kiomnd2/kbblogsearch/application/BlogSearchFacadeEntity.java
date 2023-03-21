@@ -3,8 +3,8 @@ package kb.kiomnd2.kbblogsearch.application;
 import kb.kiomnd2.kbblogsearch.common.enums.Sort;
 import kb.kiomnd2.kbblogsearch.common.exception.BlogException;
 import kb.kiomnd2.kbblogsearch.domain.*;
-import kb.kiomnd2.kbblogsearch.domain.SearchEntity;
-import kb.kiomnd2.kbblogsearch.domain.SearchRepository;
+import kb.kiomnd2.kbblogsearch.domain.KeywordEntity;
+import kb.kiomnd2.kbblogsearch.domain.KeywordRepository;
 import kb.kiomnd2.kbblogsearch.interfaces.BlogSearchRequestDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -34,7 +34,7 @@ class BlogSearchFacadeEntity {
     private BlogDataProcessService blogDataProcessService;
 
     @Mock
-    private SearchRepository searchRepository;
+    private KeywordRepository keywordRepository;
 
 
 
@@ -103,16 +103,16 @@ class BlogSearchFacadeEntity {
     @Test
     void searchListTest_success() throws Exception {
 
-        List<SearchEntity> list = List.of(new SearchEntity("test1", 5, LocalDateTime.now()),
-                new SearchEntity("test2", 4, LocalDateTime.now()),
-                new SearchEntity("test3", 3, LocalDateTime.now()),
-                new SearchEntity("test4", 2, LocalDateTime.now()),
-                new SearchEntity("test5", 1, LocalDateTime.now()));
+        List<KeywordEntity> list = List.of(new KeywordEntity("test1", 5, LocalDateTime.now()),
+                new KeywordEntity("test2", 4, LocalDateTime.now()),
+                new KeywordEntity("test3", 3, LocalDateTime.now()),
+                new KeywordEntity("test4", 2, LocalDateTime.now()),
+                new KeywordEntity("test5", 1, LocalDateTime.now()));
 
 
-        given(searchRepository.findTop10ByOrderByCountDesc()).willReturn(list);
+        given(keywordRepository.findTop10ByOrderByCountDesc()).willReturn(list);
 
-        List<SearchDto> searchList = blogSearchFacade.getSearchList();
+        List<KeywordDto> searchList = blogSearchFacade.getSearchList();
 
         assertThat(searchList.size()).isEqualTo(list.size());
         for (int i=0 ; i < list.size() ; i++) {

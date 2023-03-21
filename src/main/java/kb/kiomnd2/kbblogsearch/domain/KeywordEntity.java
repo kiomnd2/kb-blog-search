@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-public class SearchEntity {
+public class KeywordEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,7 +26,7 @@ public class SearchEntity {
     private LocalDateTime createAt;
 
     @Builder
-    public SearchEntity(String keyword, long count, LocalDateTime createAt) {
+    public KeywordEntity(String keyword, long count, LocalDateTime createAt) {
         this.keyword = keyword;
         this.count = count;
         this.createAt = createAt;

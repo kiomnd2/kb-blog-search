@@ -25,13 +25,13 @@ class BlogDataProcessServiceTest {
     private BlogDataProcessServiceImpl blogDataProcessService;
 
     @Mock
-    private SearchRepository searchRepository;
+    private KeywordRepository keywordRepository;
 
-    ArgumentCaptor<SearchEntity> searchEntityArgumentCaptor;
+    ArgumentCaptor<KeywordEntity> searchEntityArgumentCaptor;
 
     @BeforeEach
     void beforeEach() {
-        searchEntityArgumentCaptor = ArgumentCaptor.forClass(SearchEntity.class);
+        searchEntityArgumentCaptor = ArgumentCaptor.forClass(KeywordEntity.class);
 
     }
 
@@ -40,13 +40,13 @@ class BlogDataProcessServiceTest {
     void updateSearch_notFoundKeywordAndInsert_success() throws Exception {
         String keyword = "keyword";
 
-        given(searchRepository.findByKeyword(any())).willReturn(Optional.empty());
+        given(keywordRepository.findByKeyword(any())).willReturn(Optional.empty());
 
         blogDataProcessService.processData(keyword);
 
         // get Capture 1 회 호출
-        verify(searchRepository, times(1)).save(searchEntityArgumentCaptor.capture());
-        SearchEntity value = searchEntityArgumentCaptor.getValue();
+        verify(keywordRepository, times(1)).save(searchEntityArgumentCaptor.capture());
+        KeywordEntity value = searchEntityArgumentCaptor.getValue();
 
         assertThat(value.getKeyword()).isEqualTo(keyword);
         assertThat(value.getCount()).isEqualTo(1);
@@ -58,17 +58,17 @@ class BlogDataProcessServiceTest {
         String keyword = "keyword";
         int count = 1;
         LocalDateTime now = LocalDateTime.now();
-        SearchEntity search = SearchEntity.builder()
+        KeywordEntity search = KeywordEntity.builder()
                 .keyword(keyword)
                 .count(count)
                 .createAt(now)
                 .build();
 
-        given(searchRepository.findByKeyword(any())).willReturn(Optional.ofNullable(search));
+        given(keywordRepository.findByKeyword(any())).willReturn(Optional.ofNullable(search));
         blogDataProcessService.processData(keyword);
 
-        verify(searchRepository).save(searchEntityArgumentCaptor.capture());
-        SearchEntity value = searchEntityArgumentCaptor.getValue();
+        verify(keywordRepository).save(searchEntityArgumentCaptor.capture());
+        KeywordEntity value = searchEntityArgumentCaptor.getValue();
 
         assertThat(value.getCreateAt()).isEqualTo(now);
         assertThat(value.getKeyword()).isEqualTo(keyword);

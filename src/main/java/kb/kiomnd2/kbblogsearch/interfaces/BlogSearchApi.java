@@ -3,7 +3,7 @@ package kb.kiomnd2.kbblogsearch.interfaces;
 import kb.kiomnd2.kbblogsearch.application.BlogSearchFacade;
 import kb.kiomnd2.kbblogsearch.common.response.ResponseDto;
 import kb.kiomnd2.kbblogsearch.domain.BlogSearchResultDto;
-import kb.kiomnd2.kbblogsearch.domain.SearchDto;
+import kb.kiomnd2.kbblogsearch.domain.KeywordDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +23,7 @@ public class BlogSearchApi {
     }
 
     @GetMapping("/blog/list")
-    public ResponseDto<List<SearchDto>> searchBlogList() {
+    public ResponseDto<List<KeywordDto>> searchBlogList() {
         return ResponseDto.ofSuccess(blogSearchService.getSearchList());
     }
 }

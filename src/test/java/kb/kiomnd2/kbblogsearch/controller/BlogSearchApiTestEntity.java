@@ -7,7 +7,7 @@ import kb.kiomnd2.kbblogsearch.common.enums.Sort;
 import kb.kiomnd2.kbblogsearch.common.exception.BlogException;
 import kb.kiomnd2.kbblogsearch.domain.BlogSearchItemDto;
 import kb.kiomnd2.kbblogsearch.domain.BlogSearchResultDto;
-import kb.kiomnd2.kbblogsearch.domain.SearchDto;
+import kb.kiomnd2.kbblogsearch.domain.KeywordDto;
 import kb.kiomnd2.kbblogsearch.interfaces.BlogSearchApi;
 import kb.kiomnd2.kbblogsearch.interfaces.BlogSearchRequestDto;
 import org.junit.jupiter.api.DisplayName;
@@ -133,11 +133,11 @@ class BlogSearchApiTestEntity {
     @Test
     void requestSearchBlogTest_success() throws Exception {
 
-        List<SearchDto> list = List.of(new SearchDto("test1", 5, LocalDateTime.now()),
-                new SearchDto("test2", 4, LocalDateTime.now()),
-                new SearchDto("test3", 3, LocalDateTime.now()),
-                new SearchDto("test4", 2, LocalDateTime.now()),
-                new SearchDto("test5", 1, LocalDateTime.now()));
+        List<KeywordDto> list = List.of(new KeywordDto("test1", 5, LocalDateTime.now()),
+                new KeywordDto("test2", 4, LocalDateTime.now()),
+                new KeywordDto("test3", 3, LocalDateTime.now()),
+                new KeywordDto("test4", 2, LocalDateTime.now()),
+                new KeywordDto("test5", 1, LocalDateTime.now()));
 
         given(blogSearchService.getSearchList()).willReturn(list);
 
