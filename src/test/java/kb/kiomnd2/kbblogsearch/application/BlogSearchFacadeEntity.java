@@ -3,8 +3,6 @@ package kb.kiomnd2.kbblogsearch.application;
 import kb.kiomnd2.kbblogsearch.common.enums.Sort;
 import kb.kiomnd2.kbblogsearch.common.exception.BlogException;
 import kb.kiomnd2.kbblogsearch.domain.*;
-import kb.kiomnd2.kbblogsearch.domain.KeywordEntity;
-import kb.kiomnd2.kbblogsearch.domain.KeywordRepository;
 import kb.kiomnd2.kbblogsearch.interfaces.BlogSearchRequestDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

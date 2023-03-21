@@ -1,7 +1,6 @@
 package kb.kiomnd2.kbblogsearch.application;
 
 import kb.kiomnd2.kbblogsearch.domain.*;
-import kb.kiomnd2.kbblogsearch.domain.KeywordDto;
 import kb.kiomnd2.kbblogsearch.domain.mapper.entity.SearchMapper;
 import kb.kiomnd2.kbblogsearch.interfaces.BlogSearchRequestDto;
 import lombok.RequiredArgsConstructor;
