@@ -1,8 +1,5 @@
 package kb.kiomnd2.kbblogsearch.domain;
 
-import kb.kiomnd2.kbblogsearch.domain.BlogDataProcessServiceImpl;
-import kb.kiomnd2.kbblogsearch.infrastructure.SearchEntity;
-import kb.kiomnd2.kbblogsearch.infrastructure.SearchRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -5,7 +5,7 @@ import kb.kiomnd2.kbblogsearch.domain.BlogDataProcessService;
 import kb.kiomnd2.kbblogsearch.domain.BlogSearchResultDto;
 import kb.kiomnd2.kbblogsearch.domain.SearchDto;
 import kb.kiomnd2.kbblogsearch.domain.mapper.entity.SearchMapper;
-import kb.kiomnd2.kbblogsearch.infrastructure.SearchRepository;
+import kb.kiomnd2.kbblogsearch.domain.SearchRepository;
 import kb.kiomnd2.kbblogsearch.interfaces.BlogSearchRequestDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

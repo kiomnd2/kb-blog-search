@@ -1,8 +1,6 @@
 package kb.kiomnd2.kbblogsearch.domain;
 
 import kb.kiomnd2.kbblogsearch.common.annotation.RedissonLock;
-import kb.kiomnd2.kbblogsearch.infrastructure.SearchEntity;
-import kb.kiomnd2.kbblogsearch.infrastructure.SearchRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

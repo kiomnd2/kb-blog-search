@@ -1,4 +1,4 @@
-package kb.kiomnd2.kbblogsearch.infrastructure;
+package kb.kiomnd2.kbblogsearch.domain;
 
 import lombok.AccessLevel;
 import lombok.Builder;
