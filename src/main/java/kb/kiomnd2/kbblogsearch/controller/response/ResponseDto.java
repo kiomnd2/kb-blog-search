@@ -1,4 +1,4 @@
-package kb.kiomnd2.kbblogsearch.dto.response;
+package kb.kiomnd2.kbblogsearch.controller.response;
 
 import kb.kiomnd2.kbblogsearch.codes.ErrorCode;
 import lombok.AllArgsConstructor;

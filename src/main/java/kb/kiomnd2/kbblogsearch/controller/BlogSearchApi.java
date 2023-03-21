@@ -2,8 +2,8 @@ package kb.kiomnd2.kbblogsearch.controller;
 
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchRequestDto;
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchResultDto;
-import kb.kiomnd2.kbblogsearch.dto.request.SearchDto;
-import kb.kiomnd2.kbblogsearch.dto.response.ResponseDto;
+import kb.kiomnd2.kbblogsearch.controller.request.SearchDto;
+import kb.kiomnd2.kbblogsearch.controller.response.ResponseDto;
 import kb.kiomnd2.kbblogsearch.service.BlogSearchService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

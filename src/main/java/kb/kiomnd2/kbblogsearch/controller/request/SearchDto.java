@@ -1,4 +1,4 @@
-package kb.kiomnd2.kbblogsearch.dto.request;
+package kb.kiomnd2.kbblogsearch.controller.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
