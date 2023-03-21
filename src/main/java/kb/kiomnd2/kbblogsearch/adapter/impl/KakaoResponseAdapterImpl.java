@@ -5,11 +5,12 @@ import kb.kiomnd2.kbblogsearch.dto.BlogSearchResultDto;
 import kb.kiomnd2.kbblogsearch.dto.kakao.KakaoBlogResponseDto;
 import kb.kiomnd2.kbblogsearch.dto.maker.ResponseMark;
 import kb.kiomnd2.kbblogsearch.mapper.kakao.KakaoMapper;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 
-@RequiredArgsConstructor
+@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 @Component
 public class KakaoResponseAdapterImpl implements BlogResponseAdapter {
 

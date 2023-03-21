@@ -8,6 +8,7 @@ import kb.kiomnd2.kbblogsearch.exception.BlogException;
 import kb.kiomnd2.kbblogsearch.service.ApiClientService;
 import kb.kiomnd2.kbblogsearch.service.BlogResultMakeService;
 import kb.kiomnd2.kbblogsearch.service.ErrorHandleService;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Slf4j
-@RequiredArgsConstructor
+@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 @Service
 public class ApiClientServiceImpl implements ApiClientService {
 

@@ -1,4 +1,4 @@
-package kb.kiomnd2.kbblogsearch.jpa.domain;
+package kb.kiomnd2.kbblogsearch.jpa.entity;
 
 import lombok.AccessLevel;
 import lombok.Builder;

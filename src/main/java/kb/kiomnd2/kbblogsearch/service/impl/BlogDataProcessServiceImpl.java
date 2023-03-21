@@ -1,9 +1,10 @@
 package kb.kiomnd2.kbblogsearch.service.impl;
 
 import kb.kiomnd2.kbblogsearch.annotation.RedissonLock;
-import kb.kiomnd2.kbblogsearch.jpa.domain.SearchEntity;
+import kb.kiomnd2.kbblogsearch.jpa.entity.SearchEntity;
 import kb.kiomnd2.kbblogsearch.jpa.repository.SearchRepository;
 import kb.kiomnd2.kbblogsearch.service.BlogDataProcessService;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 
 @Service
-@RequiredArgsConstructor
+@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 public class BlogDataProcessServiceImpl implements BlogDataProcessService {
 
     private final SearchRepository searchRepository;

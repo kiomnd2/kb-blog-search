@@ -6,7 +6,7 @@ import kb.kiomnd2.kbblogsearch.dto.BlogSearchResultDto;
 import kb.kiomnd2.kbblogsearch.dto.request.SearchDto;
 import kb.kiomnd2.kbblogsearch.enums.Sort;
 import kb.kiomnd2.kbblogsearch.exception.BlogException;
-import kb.kiomnd2.kbblogsearch.jpa.domain.SearchEntity;
+import kb.kiomnd2.kbblogsearch.jpa.entity.SearchEntity;
 import kb.kiomnd2.kbblogsearch.jpa.repository.SearchRepository;
 import kb.kiomnd2.kbblogsearch.service.impl.BlogSearchServiceImpl;
 import org.junit.jupiter.api.DisplayName;

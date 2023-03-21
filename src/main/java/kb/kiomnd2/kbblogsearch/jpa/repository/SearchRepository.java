@@ -1,6 +1,6 @@
 package kb.kiomnd2.kbblogsearch.jpa.repository;
 
-import kb.kiomnd2.kbblogsearch.jpa.domain.SearchEntity;
+import kb.kiomnd2.kbblogsearch.jpa.entity.SearchEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

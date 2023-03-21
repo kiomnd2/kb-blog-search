@@ -1,7 +1,7 @@
 package kb.kiomnd2.kbblogsearch.mapper.entity;
 
 import kb.kiomnd2.kbblogsearch.dto.request.SearchDto;
-import kb.kiomnd2.kbblogsearch.jpa.domain.SearchEntity;
+import kb.kiomnd2.kbblogsearch.jpa.entity.SearchEntity;
 import kb.kiomnd2.kbblogsearch.mapper.EntityMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;

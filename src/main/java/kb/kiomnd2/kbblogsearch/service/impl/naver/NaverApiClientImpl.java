@@ -9,6 +9,7 @@ import kb.kiomnd2.kbblogsearch.property.NaverApiProperty;
 import kb.kiomnd2.kbblogsearch.service.ErrorHandleService;
 import kb.kiomnd2.kbblogsearch.service.impl.ApiClient;
 import kb.kiomnd2.kbblogsearch.utils.ApiUtil;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpEntity;
@@ -21,7 +22,7 @@ import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @Slf4j
-@RequiredArgsConstructor
+@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 @Service
 public class NaverApiClientImpl implements ApiClient<NaverBlogResponseDto>, ErrorHandleService {
 
