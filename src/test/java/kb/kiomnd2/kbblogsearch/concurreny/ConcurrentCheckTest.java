@@ -1,8 +1,8 @@
 package kb.kiomnd2.kbblogsearch.concurreny;
 
 import kb.kiomnd2.kbblogsearch.domain.BlogDataProcessService;
-import kb.kiomnd2.kbblogsearch.infrastructure.SearchEntity;
-import kb.kiomnd2.kbblogsearch.infrastructure.SearchRepository;
+import kb.kiomnd2.kbblogsearch.domain.SearchEntity;
+import kb.kiomnd2.kbblogsearch.domain.SearchRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
