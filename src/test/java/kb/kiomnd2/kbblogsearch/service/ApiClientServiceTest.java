@@ -4,7 +4,6 @@ import kb.kiomnd2.kbblogsearch.dto.BlogSearchItemDto;
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchRequestDto;
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchResultDto;
 import kb.kiomnd2.kbblogsearch.dto.kakao.KakaoBlogResponseDto;
-import kb.kiomnd2.kbblogsearch.service.impl.ApiClient;
 import kb.kiomnd2.kbblogsearch.service.impl.ApiClientServiceImpl;
 import kb.kiomnd2.kbblogsearch.service.impl.BlogResultMakeServiceImpl;
 import kb.kiomnd2.kbblogsearch.service.impl.naver.NaverApiClientImpl;

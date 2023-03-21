@@ -1,4 +1,4 @@
-package kb.kiomnd2.kbblogsearch.service.impl;
+package kb.kiomnd2.kbblogsearch.service;
 
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchRequestDto;
 import org.springframework.web.util.UriComponents;

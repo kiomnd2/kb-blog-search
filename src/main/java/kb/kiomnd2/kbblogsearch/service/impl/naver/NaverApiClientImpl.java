@@ -7,7 +7,7 @@ import kb.kiomnd2.kbblogsearch.dto.naver.NaverBlogResponseDto;
 import kb.kiomnd2.kbblogsearch.mapper.naver.NaverMapper;
 import kb.kiomnd2.kbblogsearch.property.NaverApiProperty;
 import kb.kiomnd2.kbblogsearch.service.ErrorHandleService;
-import kb.kiomnd2.kbblogsearch.service.impl.ApiClient;
+import kb.kiomnd2.kbblogsearch.service.ApiClient;
 import kb.kiomnd2.kbblogsearch.utils.ApiUtil;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;

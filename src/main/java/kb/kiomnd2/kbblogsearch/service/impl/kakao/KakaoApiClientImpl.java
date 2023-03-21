@@ -4,7 +4,7 @@ import kb.kiomnd2.kbblogsearch.dto.BlogSearchRequestDto;
 import kb.kiomnd2.kbblogsearch.dto.kakao.KakaoBlogResponseDto;
 import kb.kiomnd2.kbblogsearch.mapper.kakao.KakaoMapper;
 import kb.kiomnd2.kbblogsearch.property.KakaoApiProperty;
-import kb.kiomnd2.kbblogsearch.service.impl.ApiClient;
+import kb.kiomnd2.kbblogsearch.service.ApiClient;
 import kb.kiomnd2.kbblogsearch.utils.ApiUtil;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;

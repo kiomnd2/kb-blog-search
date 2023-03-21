@@ -5,6 +5,7 @@ import kb.kiomnd2.kbblogsearch.dto.BlogSearchRequestDto;
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchResultDto;
 import kb.kiomnd2.kbblogsearch.dto.kakao.KakaoBlogResponseDto;
 import kb.kiomnd2.kbblogsearch.exception.BlogException;
+import kb.kiomnd2.kbblogsearch.service.ApiClient;
 import kb.kiomnd2.kbblogsearch.service.ApiClientService;
 import kb.kiomnd2.kbblogsearch.service.BlogResultMakeService;
 import kb.kiomnd2.kbblogsearch.service.ErrorHandleService;
