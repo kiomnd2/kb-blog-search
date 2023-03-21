@@ -4,8 +4,10 @@ import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 import redis.embedded.RedisServer;
 
 import javax.annotation.PostConstruct;
@@ -33,7 +35,18 @@ public class RedissonConfig {
         return Redisson.create(config);
     }
 
+    @PostConstruct
+    public void redisServer() throws Exception {
+        redisServer = new RedisServer(redisPort);
+        redisServer.start();
+    }
 
+    @PreDestroy
+    public void stopRedis() {
+        if (redisServer != null) {
+            redisServer.stop();
+        }
+    }
 
 
 }
