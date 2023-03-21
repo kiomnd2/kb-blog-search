@@ -5,7 +5,7 @@ import kb.kiomnd2.kbblogsearch.codes.ErrorCode;
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchItemDto;
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchRequestDto;
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchResultDto;
-import kb.kiomnd2.kbblogsearch.dto.request.SearchDto;
+import kb.kiomnd2.kbblogsearch.controller.request.SearchDto;
 import kb.kiomnd2.kbblogsearch.enums.Sort;
 import kb.kiomnd2.kbblogsearch.exception.BlogException;
 import kb.kiomnd2.kbblogsearch.service.BlogSearchService;

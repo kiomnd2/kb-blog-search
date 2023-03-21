@@ -1,5 +1,6 @@
 package kb.kiomnd2.kbblogsearch.controller.response;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import kb.kiomnd2.kbblogsearch.codes.ErrorCode;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResponseDto<T> {
 
     private Result result;

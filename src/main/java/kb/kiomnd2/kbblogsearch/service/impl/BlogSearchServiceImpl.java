@@ -2,7 +2,7 @@ package kb.kiomnd2.kbblogsearch.service.impl;
 
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchRequestDto;
 import kb.kiomnd2.kbblogsearch.dto.BlogSearchResultDto;
-import kb.kiomnd2.kbblogsearch.dto.request.SearchDto;
+import kb.kiomnd2.kbblogsearch.controller.request.SearchDto;
 import kb.kiomnd2.kbblogsearch.jpa.repository.SearchRepository;
 import kb.kiomnd2.kbblogsearch.mapper.entity.SearchMapper;
 import kb.kiomnd2.kbblogsearch.service.ApiClientService;
