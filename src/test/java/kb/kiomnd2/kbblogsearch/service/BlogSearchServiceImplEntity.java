@@ -1,14 +1,12 @@
 package kb.kiomnd2.kbblogsearch.service;
 
-import kb.kiomnd2.kbblogsearch.dto.BlogSearchItemDto;
-import kb.kiomnd2.kbblogsearch.dto.BlogSearchRequestDto;
-import kb.kiomnd2.kbblogsearch.dto.BlogSearchResultDto;
-import kb.kiomnd2.kbblogsearch.controller.request.SearchDto;
-import kb.kiomnd2.kbblogsearch.enums.Sort;
-import kb.kiomnd2.kbblogsearch.exception.BlogException;
-import kb.kiomnd2.kbblogsearch.jpa.entity.SearchEntity;
-import kb.kiomnd2.kbblogsearch.jpa.repository.SearchRepository;
-import kb.kiomnd2.kbblogsearch.service.impl.BlogSearchServiceImpl;
+import kb.kiomnd2.kbblogsearch.application.BlogSearchFacade;
+import kb.kiomnd2.kbblogsearch.common.enums.Sort;
+import kb.kiomnd2.kbblogsearch.common.exception.BlogException;
+import kb.kiomnd2.kbblogsearch.domain.*;
+import kb.kiomnd2.kbblogsearch.infrastructure.SearchEntity;
+import kb.kiomnd2.kbblogsearch.infrastructure.SearchRepository;
+import kb.kiomnd2.kbblogsearch.interfaces.BlogSearchRequestDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -28,7 +26,7 @@ import static org.mockito.BDDMockito.given;
 class BlogSearchServiceImplEntity {
 
     @InjectMocks
-    private BlogSearchServiceImpl blogSearchService;
+    private BlogSearchFacade blogSearchService;
 
     @Mock
     private ApiClientService client;

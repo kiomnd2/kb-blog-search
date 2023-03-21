@@ -1,14 +1,15 @@
 package kb.kiomnd2.kbblogsearch.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import kb.kiomnd2.kbblogsearch.codes.ErrorCode;
-import kb.kiomnd2.kbblogsearch.dto.BlogSearchItemDto;
-import kb.kiomnd2.kbblogsearch.dto.BlogSearchRequestDto;
-import kb.kiomnd2.kbblogsearch.dto.BlogSearchResultDto;
-import kb.kiomnd2.kbblogsearch.controller.request.SearchDto;
-import kb.kiomnd2.kbblogsearch.enums.Sort;
-import kb.kiomnd2.kbblogsearch.exception.BlogException;
-import kb.kiomnd2.kbblogsearch.service.BlogSearchService;
+import kb.kiomnd2.kbblogsearch.application.BlogSearchFacade;
+import kb.kiomnd2.kbblogsearch.common.codes.ErrorCode;
+import kb.kiomnd2.kbblogsearch.common.enums.Sort;
+import kb.kiomnd2.kbblogsearch.common.exception.BlogException;
+import kb.kiomnd2.kbblogsearch.domain.BlogSearchItemDto;
+import kb.kiomnd2.kbblogsearch.domain.BlogSearchResultDto;
+import kb.kiomnd2.kbblogsearch.domain.SearchDto;
+import kb.kiomnd2.kbblogsearch.interfaces.BlogSearchApi;
+import kb.kiomnd2.kbblogsearch.interfaces.BlogSearchRequestDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -41,7 +42,7 @@ class BlogSearchApiTestEntity {
     ObjectMapper mapper;
 
     @MockBean
-    private BlogSearchService blogSearchService;
+    private BlogSearchFacade blogSearchService;
 
 
     @DisplayName("블로그 검색 API- 성공")

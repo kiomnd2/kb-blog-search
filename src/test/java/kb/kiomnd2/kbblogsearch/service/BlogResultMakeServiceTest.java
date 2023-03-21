@@ -1,12 +1,12 @@
 package kb.kiomnd2.kbblogsearch.service;
 
-import kb.kiomnd2.kbblogsearch.adapter.BlogResponseAdapter;
-import kb.kiomnd2.kbblogsearch.dto.BlogSearchItemDto;
-import kb.kiomnd2.kbblogsearch.dto.BlogSearchResultDto;
-import kb.kiomnd2.kbblogsearch.dto.kakao.DocumentsDto;
-import kb.kiomnd2.kbblogsearch.dto.kakao.KakaoBlogResponseDto;
-import kb.kiomnd2.kbblogsearch.dto.kakao.MetaDto;
-import kb.kiomnd2.kbblogsearch.service.impl.BlogResultMakeServiceImpl;
+import kb.kiomnd2.kbblogsearch.domain.BlogResultMakeServiceImpl;
+import kb.kiomnd2.kbblogsearch.domain.BlogSearchItemDto;
+import kb.kiomnd2.kbblogsearch.domain.BlogSearchResultDto;
+import kb.kiomnd2.kbblogsearch.domain.adapter.BlogResponseAdapter;
+import kb.kiomnd2.kbblogsearch.domain.kakao.DocumentsDto;
+import kb.kiomnd2.kbblogsearch.domain.kakao.KakaoBlogResponseDto;
+import kb.kiomnd2.kbblogsearch.domain.kakao.MetaDto;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

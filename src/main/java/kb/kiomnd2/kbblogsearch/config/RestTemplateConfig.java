@@ -17,5 +17,4 @@ public class RestTemplateConfig {
                 .setConnectTimeout(Duration.ofMillis(30000))
                 .build();
     }
-
 }
