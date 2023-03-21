@@ -1,7 +1,7 @@
 # Blog API
 
 ## 결과 JAR 파일
-
+http://naver.me/FfWfic83
 
 ```
 정상적인 어플리케이션 부팅을 위해 내부에 EmbededRedis를 함께 동작 시킵니다.
