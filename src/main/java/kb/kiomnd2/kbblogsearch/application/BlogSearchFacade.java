@@ -10,6 +10,7 @@ import kb.kiomnd2.kbblogsearch.interfaces.BlogSearchRequestDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -22,11 +23,12 @@ public class BlogSearchFacade {
     private final BlogDataProcessService dataProcessService;
     private final ApiClientService apiClientService;
 
+    @Transactional
     public BlogSearchResultDto search(BlogSearchRequestDto request) {
-        BlogSearchResultDto result = apiClientService.request(request);
         dataProcessService.processData(request.getKeyword());
-        return result;
+        return apiClientService.request(request);
     }
+
     public List<SearchDto> getSearchList() {
         return SearchMapper.INSTANCE.toListDto(searchRepository.findTop10ByOrderByCountDesc());
     }
