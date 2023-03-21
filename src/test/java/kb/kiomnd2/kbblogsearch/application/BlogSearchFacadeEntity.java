@@ -1,6 +1,5 @@
-package kb.kiomnd2.kbblogsearch.service;
+package kb.kiomnd2.kbblogsearch.application;
 
-import kb.kiomnd2.kbblogsearch.application.BlogSearchFacade;
 import kb.kiomnd2.kbblogsearch.common.enums.Sort;
 import kb.kiomnd2.kbblogsearch.common.exception.BlogException;
 import kb.kiomnd2.kbblogsearch.domain.*;
@@ -23,10 +22,10 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 
 @ExtendWith(MockitoExtension.class)
-class BlogSearchServiceImplEntity {
+class BlogSearchFacadeEntity {
 
     @InjectMocks
-    private BlogSearchFacade blogSearchService;
+    private BlogSearchFacade blogSearchFacade;
 
     @Mock
     private ApiClientService client;
@@ -70,7 +69,7 @@ class BlogSearchServiceImplEntity {
 
         given(client.request(any())).willReturn(result);
 
-        BlogSearchResultDto search = blogSearchService.search(request);
+        BlogSearchResultDto search = blogSearchFacade.search(request);
 
         assertThat(search.getTotalCount()).isEqualTo(search.getTotalCount());
         assertThat(search.getItems().size()).isEqualTo(1);
@@ -96,7 +95,7 @@ class BlogSearchServiceImplEntity {
         given(client.request(any())).willThrow(BlogException.class);
 
         assertThatThrownBy(() -> {
-            blogSearchService.search(request);
+            blogSearchFacade.search(request);
         });
     }
 
@@ -113,7 +112,7 @@ class BlogSearchServiceImplEntity {
 
         given(searchRepository.findTop10ByOrderByCountDesc()).willReturn(list);
 
-        List<SearchDto> searchList = blogSearchService.getSearchList();
+        List<SearchDto> searchList = blogSearchFacade.getSearchList();
 
         assertThat(searchList.size()).isEqualTo(list.size());
         for (int i=0 ; i < list.size() ; i++) {

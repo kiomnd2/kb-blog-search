@@ -1,4 +1,4 @@
-package kb.kiomnd2.kbblogsearch.domain.search;
+package kb.kiomnd2.kbblogsearch.domain;
 
 import kb.kiomnd2.kbblogsearch.domain.*;
 import kb.kiomnd2.kbblogsearch.domain.kakao.KakaoBlogResponseDto;

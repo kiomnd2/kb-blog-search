@@ -1,4 +1,4 @@
-package kb.kiomnd2.kbblogsearch.service;
+package kb.kiomnd2.kbblogsearch.domain;
 
 import kb.kiomnd2.kbblogsearch.domain.BlogDataProcessServiceImpl;
 import kb.kiomnd2.kbblogsearch.infrastructure.SearchEntity;
