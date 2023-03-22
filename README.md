@@ -77,7 +77,7 @@ result |string    | 결과 SUCCESS/FAIL
 ### Get To 10 Keyword List 
 Spec
 ```
-GET /serach/blog/keyword/list
+GET /search/blog/keyword/list
 ```
 
 * Request
