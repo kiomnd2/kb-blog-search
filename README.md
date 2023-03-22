@@ -38,7 +38,7 @@ limit	| integer |	No |	10 |	한 페이지에 보여질 검색 결과 수
 ### Get To 10 Keyword List 
 Spec
 ```
-GET /search/blog/list
+GET /serach/blog/keyword/list
 ```
 
 * Request

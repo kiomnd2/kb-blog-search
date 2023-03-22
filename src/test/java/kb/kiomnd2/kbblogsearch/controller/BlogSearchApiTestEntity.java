@@ -116,9 +116,9 @@ class BlogSearchApiTestEntity {
                 .build();
         // result
 
-        given(blogSearchService.search(any())).willThrow(new BlogException(ErrorCode.BLOG_RESULT_MAKE_ERROR));
+        given(blogSearchService.getSearchList()).willThrow(new BlogException(ErrorCode.BLOG_RESULT_MAKE_ERROR));
 
-        mockMvc.perform(post("/search/blog")
+        mockMvc.perform(get("/search/blog/keyword/list")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(mapper.writeValueAsString(request)))
                 .andDo(print())
@@ -141,7 +141,7 @@ class BlogSearchApiTestEntity {
 
         given(blogSearchService.getSearchList()).willReturn(list);
 
-        mockMvc.perform(get("/search/blog/list"))
+        mockMvc.perform(get("/search/blog/keyword/list"))
                 .andDo(print())
                 .andExpect(status().isOk());
     }

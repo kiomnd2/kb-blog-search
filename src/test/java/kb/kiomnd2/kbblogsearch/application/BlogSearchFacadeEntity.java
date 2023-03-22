@@ -32,7 +32,7 @@ class BlogSearchFacadeEntity {
     private BlogDataProcessService blogDataProcessService;
 
     @Mock
-    private KeywordRepository keywordRepository;
+    private KeywordService keywordService;
 
 
 
@@ -101,14 +101,14 @@ class BlogSearchFacadeEntity {
     @Test
     void searchListTest_success() throws Exception {
 
-        List<KeywordEntity> list = List.of(new KeywordEntity("test1", 5, LocalDateTime.now()),
-                new KeywordEntity("test2", 4, LocalDateTime.now()),
-                new KeywordEntity("test3", 3, LocalDateTime.now()),
-                new KeywordEntity("test4", 2, LocalDateTime.now()),
-                new KeywordEntity("test5", 1, LocalDateTime.now()));
+        List<KeywordDto> list = List.of(new KeywordDto("test1", 5, LocalDateTime.now()),
+                new KeywordDto("test2", 4, LocalDateTime.now()),
+                new KeywordDto("test3", 3, LocalDateTime.now()),
+                new KeywordDto("test4", 2, LocalDateTime.now()),
+                new KeywordDto("test5", 1, LocalDateTime.now()));
 
 
-        given(keywordRepository.findTop10ByOrderByCountDesc()).willReturn(list);
+        given(keywordService.findTop10ByOrder()).willReturn(list);
 
         List<KeywordDto> searchList = blogSearchFacade.getSearchList();
 

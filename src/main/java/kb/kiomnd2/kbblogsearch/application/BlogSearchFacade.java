@@ -14,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BlogSearchFacade {
 
-    private final KeywordRepository keywordRepository;
+    private final KeywordService keywordService;
     private final BlogDataProcessService dataProcessService;
     private final ApiClientService apiClientService;
 
@@ -24,6 +24,6 @@ public class BlogSearchFacade {
     }
 
     public List<KeywordDto> getSearchList() {
-        return SearchMapper.INSTANCE.toListDto(keywordRepository.findTop10ByOrderByCountDesc());
+        return keywordService.findTop10ByOrder();
     }
 }

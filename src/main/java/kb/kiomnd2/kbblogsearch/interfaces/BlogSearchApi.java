@@ -22,8 +22,8 @@ public class BlogSearchApi {
         return ResponseDto.ofSuccess(blogSearchService.search(request));
     }
 
-    @GetMapping("/blog/list")
-    public ResponseDto<List<KeywordDto>> searchBlogList() {
+    @GetMapping("/blog/keyword/list")
+    public ResponseDto<List<KeywordDto>> searchKeywordList() {
         return ResponseDto.ofSuccess(blogSearchService.getSearchList());
     }
 }
