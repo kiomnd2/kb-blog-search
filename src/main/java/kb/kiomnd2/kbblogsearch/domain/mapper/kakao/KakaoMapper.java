@@ -29,6 +29,7 @@ public interface KakaoMapper extends BlogMapper<KakaoBlogResponseDto, KakaoBlogR
     @Named("documentsToItems")
     @Mappings({
             @Mapping(source = "meta.totalCount", target = "totalCount"),
+            @Mapping(source = "meta.isEnd", target = "isEnd"),
             @Mapping(source = "documents", target = "items")
     })
     @Override

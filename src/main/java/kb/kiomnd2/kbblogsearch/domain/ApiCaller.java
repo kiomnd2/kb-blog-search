@@ -3,7 +3,7 @@ package kb.kiomnd2.kbblogsearch.domain;
 import kb.kiomnd2.kbblogsearch.interfaces.BlogSearchRequestDto;
 import org.springframework.web.util.UriComponents;
 
-public interface ApiCaller<R> {
+public interface ApiCaller<R extends ResponseMark> {
     UriComponents getUriComponent(BlogSearchRequestDto requestDto);
     R sendRequest(BlogSearchRequestDto blogSearchRequestDto);
 }
