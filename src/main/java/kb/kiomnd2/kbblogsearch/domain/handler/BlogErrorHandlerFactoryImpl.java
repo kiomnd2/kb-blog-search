@@ -2,7 +2,6 @@ package kb.kiomnd2.kbblogsearch.domain.handler;
 
 import kb.kiomnd2.kbblogsearch.common.codes.ErrorCode;
 import kb.kiomnd2.kbblogsearch.common.exception.BlogException;
-import kb.kiomnd2.kbblogsearch.domain.BlogErrorHandlerFactory;
 import kb.kiomnd2.kbblogsearch.domain.BlogResultMakeService;
 import kb.kiomnd2.kbblogsearch.domain.BlogSearchResultDto;
 import kb.kiomnd2.kbblogsearch.domain.naver.BlogErrorHandleService;

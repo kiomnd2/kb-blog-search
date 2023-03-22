@@ -1,5 +1,6 @@
 package kb.kiomnd2.kbblogsearch.domain;
 
+import kb.kiomnd2.kbblogsearch.domain.handler.BlogErrorHandlerFactory;
 import kb.kiomnd2.kbblogsearch.domain.kakao.KakaoBlogResponseDto;
 import kb.kiomnd2.kbblogsearch.interfaces.BlogSearchRequestDto;
 import lombok.AccessLevel;
