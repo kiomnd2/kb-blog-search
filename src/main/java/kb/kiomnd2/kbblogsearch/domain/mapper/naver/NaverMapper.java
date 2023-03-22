@@ -29,7 +29,8 @@ public interface NaverMapper extends BlogMapper<NaverBlogResponseDto, NaverBlogR
     @Named("documentsToItems")
     @Mappings({
             @Mapping(source = "total", target = "totalCount"),
-            @Mapping(source = "items", target = "items")
+            @Mapping(source = "items", target = "items"),
+            @Mapping(target = "isEnd", ignore = true)
     })
     @Override
     BlogSearchResultDto toResponse(NaverBlogResponseDto request);
