@@ -1,6 +1,7 @@
 package kb.kiomnd2.kbblogsearch.domain;
 
 import kb.kiomnd2.kbblogsearch.domain.handler.BlogErrorHandlerFactory;
+import kb.kiomnd2.kbblogsearch.domain.kakao.KakaoBlogResponseDto;
 import kb.kiomnd2.kbblogsearch.domain.naver.NaverBlogResponseDto;
 import kb.kiomnd2.kbblogsearch.interfaces.BlogSearchRequestDto;
 import lombok.AccessLevel;
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ApiClientServiceImpl implements ApiClientService {
 
-    private final ApiCaller<NaverBlogResponseDto> client;
+    private final ApiCaller<KakaoBlogResponseDto> client;
     private final BlogErrorHandlerFactory blogErrorHandlerFactory;
     private final BlogResultMakeService blogResultMakeService;
 
