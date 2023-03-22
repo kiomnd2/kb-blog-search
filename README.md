@@ -15,7 +15,9 @@ EmbeddedRedis 의 기본 포트는 36379 로 설정 했습니다
 * jpa
 * redisson
 * mapstruct
+  * Request, Response, Entity 파싱
 * embedded-redis
+  * 서비스 부팅, 레디션 락 테스트 
 
 ## API Spec
 
