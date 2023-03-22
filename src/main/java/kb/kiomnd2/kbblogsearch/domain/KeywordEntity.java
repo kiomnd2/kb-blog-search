@@ -18,11 +18,8 @@ public class KeywordEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String keyword;
-
     private long count;
-
     private LocalDateTime createAt;
 
     @Builder
