@@ -6,11 +6,13 @@ import org.redisson.config.Config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 import redis.embedded.RedisServer;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
+@DependsOn("embeddedRedisConfig")
 @Configuration(proxyBeanMethods = false)
 public class RedissonConfig {
 
@@ -22,8 +24,6 @@ public class RedissonConfig {
     @Value("${spring.redis.port}")
     private int redisPort;
 
-    private RedisServer redisServer;
-
     @Bean
     public RedissonClient redissonClient() {
         Config config = new Config();
@@ -32,18 +32,7 @@ public class RedissonConfig {
         return Redisson.create(config);
     }
 
-    @PostConstruct
-    public void redisServer() throws Exception {
-        redisServer = new RedisServer(redisPort);
-        redisServer.start();
-    }
 
-    @PreDestroy
-    public void stopRedis() {
-        if (redisServer != null) {
-            redisServer.stop();
-        }
-    }
 
 
 }
