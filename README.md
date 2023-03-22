@@ -53,6 +53,9 @@ GET /serach/blog/keyword/list
 ### Jmeter 동시성
 ![img.png](img/img.png)
 
+### coverage
+![img.png](img/img3.png)
+
 ## 문제해결 전략
 * 확장성
    - ErrorHandler 인터페이스를 만들고 해당 인터페이스를 구현한 클래스를 ErrorHandler List 에 의존을 주입함

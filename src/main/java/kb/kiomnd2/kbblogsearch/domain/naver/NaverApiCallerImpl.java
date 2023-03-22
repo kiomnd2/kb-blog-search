@@ -7,7 +7,6 @@ import kb.kiomnd2.kbblogsearch.domain.ApiCaller;
 import kb.kiomnd2.kbblogsearch.domain.kakao.KakaoBlogResponseDto;
 import kb.kiomnd2.kbblogsearch.domain.mapper.naver.NaverMapper;
 import kb.kiomnd2.kbblogsearch.interfaces.BlogSearchRequestDto;
-import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpEntity;
@@ -20,7 +19,7 @@ import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @Slf4j
-@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
+@RequiredArgsConstructor
 @Service
 public class NaverApiCallerImpl implements ApiCaller<NaverBlogResponseDto>, BlogErrorHandleService {
 

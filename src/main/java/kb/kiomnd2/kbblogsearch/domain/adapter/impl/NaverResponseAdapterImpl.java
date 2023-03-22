@@ -5,10 +5,9 @@ import kb.kiomnd2.kbblogsearch.domain.ResponseMark;
 import kb.kiomnd2.kbblogsearch.domain.adapter.BlogResponseAdapter;
 import kb.kiomnd2.kbblogsearch.domain.mapper.naver.NaverMapper;
 import kb.kiomnd2.kbblogsearch.domain.naver.NaverBlogResponseDto;
-import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
+@RequiredArgsConstructor
 @Component
 public class NaverResponseAdapterImpl implements BlogResponseAdapter {
 

@@ -3,7 +3,6 @@ package kb.kiomnd2.kbblogsearch.common.aop;
 import kb.kiomnd2.kbblogsearch.common.annotation.RedissonLock;
 import kb.kiomnd2.kbblogsearch.common.codes.ErrorCode;
 import kb.kiomnd2.kbblogsearch.common.exception.BlogException;
-import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -18,7 +17,7 @@ import java.lang.reflect.Method;
 
 @Aspect
 @Component
-@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
+@RequiredArgsConstructor
 @Slf4j
 public class RedissonLockAspect {
 

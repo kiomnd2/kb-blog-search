@@ -1,14 +1,13 @@
 package kb.kiomnd2.kbblogsearch.domain;
 
 import kb.kiomnd2.kbblogsearch.common.annotation.RedissonLock;
-import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
 @Service
-@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
+@RequiredArgsConstructor
 public class BlogDataProcessServiceImpl implements BlogDataProcessService {
 
     private final KeywordRepository keywordRepository;

@@ -3,13 +3,12 @@ package kb.kiomnd2.kbblogsearch.domain;
 import kb.kiomnd2.kbblogsearch.common.codes.ErrorCode;
 import kb.kiomnd2.kbblogsearch.common.exception.BlogException;
 import kb.kiomnd2.kbblogsearch.domain.adapter.BlogResponseAdapter;
-import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
+@RequiredArgsConstructor
 @Component
 public class BlogResultMakeServiceImpl implements BlogResultMakeService {
 

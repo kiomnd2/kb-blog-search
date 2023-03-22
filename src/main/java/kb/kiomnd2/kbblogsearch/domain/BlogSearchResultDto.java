@@ -13,5 +13,6 @@ import java.util.List;
 @AllArgsConstructor
 public class BlogSearchResultDto {
     private final Integer totalCount;
+    private final boolean isEnd;
     private final List<BlogSearchItemDto> items;
 }
