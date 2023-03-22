@@ -32,7 +32,7 @@ Content-Type application/json
 
 Param명 | 	Type | 필수 |	Default | 설명 |
 ------|----------|----------|------------ | -----|
-query |	string    |	 O|	N/A  | 검색어
+keyword |	string    |	 O|	N/A  | 검색어
 sort  |	string    |	 X | accuracy	| 검색 결과 정렬 기준 (accuracy or recency)
 offset	| integer |	 X |	1 | 페이지 번호
 limit	| integer |	 X | 10	| 한 페이지에 보여질 검색 결과 수
