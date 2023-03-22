@@ -50,6 +50,8 @@ result |string    | 결과 SUCCESS/FAIL
 ---- contents	| string | 컨텐츠
 ---- createAt	| string | 생성일자
 
+* Example
+
 ```json
 {
   "result": "SUCCESS",
@@ -88,6 +90,23 @@ result |string    | 결과 SUCCESS/FAIL
 ---- count	| string | 조회 건수
 ---- createAt	| string | 최초생성일자
 
+
+* Example
+
+```json
+{
+    "result": "SUCCESS",
+    "data": [
+        {
+            "keyword": "tes111",
+            "count": 1,
+            "createAt": "2023-03-22T20:08:30.260139"
+        }
+    ]
+}
+```
+
+
 ## 테스트
 
 ### Test Code
@@ -110,3 +129,7 @@ result |string    | 결과 SUCCESS/FAIL
 
 
 ### 대규모 트래픽에 대한 고민
+* Redis 를 사용
+  * 키워드를 저장할 때, DB 에 저장, 읽을 때 캐시에서 읽고, 캐시에 없으면 DB 조회후 캐시 저장 
+  * 일정 시간마다 DB 데이터를 캐시에 동기화 시켜주는 작업 필요 
+  * 읽을 때 메모리에서 읽어오므로 조회 시 빠른 속도가 나올 것으로 기대됨
