@@ -3,8 +3,7 @@ package kb.kiomnd2.kbblogsearch.domain.naver;
 import kb.kiomnd2.kbblogsearch.common.consts.NaverApiHeaderConst;
 import kb.kiomnd2.kbblogsearch.common.property.NaverApiProperty;
 import kb.kiomnd2.kbblogsearch.common.utils.ApiUtil;
-import kb.kiomnd2.kbblogsearch.domain.ApiClient;
-import kb.kiomnd2.kbblogsearch.domain.BlogErrorHandleService;
+import kb.kiomnd2.kbblogsearch.domain.ApiCaller;
 import kb.kiomnd2.kbblogsearch.domain.kakao.KakaoBlogResponseDto;
 import kb.kiomnd2.kbblogsearch.domain.mapper.naver.NaverMapper;
 import kb.kiomnd2.kbblogsearch.interfaces.BlogSearchRequestDto;
@@ -23,7 +22,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 @Slf4j
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 @Service
-public class NaverApiClientImpl implements ApiClient<NaverBlogResponseDto>, BlogErrorHandleService {
+public class NaverApiCallerImpl implements ApiCaller<NaverBlogResponseDto>, BlogErrorHandleService {
 
     private final RestTemplate restTemplate;
     private final NaverApiProperty naverApiProperty;

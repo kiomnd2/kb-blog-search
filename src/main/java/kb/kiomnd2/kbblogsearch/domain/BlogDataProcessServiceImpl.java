@@ -4,7 +4,6 @@ import kb.kiomnd2.kbblogsearch.common.annotation.RedissonLock;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
@@ -20,7 +19,6 @@ public class BlogDataProcessServiceImpl implements BlogDataProcessService {
         this.updateSearch(keyword);
     }
 
-    @Transactional
     public void updateSearch(String keyword) {
         keywordRepository.findByKeyword(keyword).ifPresentOrElse((search) ->{
             search.plusCount();

@@ -1,7 +1,8 @@
 package kb.kiomnd2.kbblogsearch.domain;
 
 import kb.kiomnd2.kbblogsearch.domain.kakao.KakaoBlogResponseDto;
-import kb.kiomnd2.kbblogsearch.domain.naver.NaverApiClientImpl;
+import kb.kiomnd2.kbblogsearch.domain.naver.BlogErrorHandleService;
+import kb.kiomnd2.kbblogsearch.domain.naver.NaverApiCallerImpl;
 import kb.kiomnd2.kbblogsearch.interfaces.BlogSearchRequestDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -22,7 +23,7 @@ import static org.mockito.BDDMockito.given;
 
 @Transactional
 @ExtendWith(MockitoExtension.class)
-class ApiClientServiceTest {
+class ApiCallerServiceTest {
 
     @InjectMocks
     ApiClientServiceImpl apiClientService;
@@ -31,13 +32,13 @@ class ApiClientServiceTest {
     BlogResultMakeServiceImpl blogResultMakeService;
 
     @Mock
-    ApiClient<KakaoBlogResponseDto> client;
+    ApiCaller<KakaoBlogResponseDto> client;
 
     @Spy
     List<BlogErrorHandleService> errorHandleServices = new ArrayList<>();
 
     @Mock
-    NaverApiClientImpl naverApiClient;
+    NaverApiCallerImpl naverApiClient;
 
     @BeforeEach
     void setup() {

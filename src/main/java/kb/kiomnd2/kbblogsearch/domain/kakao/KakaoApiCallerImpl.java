@@ -2,7 +2,7 @@ package kb.kiomnd2.kbblogsearch.domain.kakao;
 
 import kb.kiomnd2.kbblogsearch.common.property.KakaoApiProperty;
 import kb.kiomnd2.kbblogsearch.common.utils.ApiUtil;
-import kb.kiomnd2.kbblogsearch.domain.ApiClient;
+import kb.kiomnd2.kbblogsearch.domain.ApiCaller;
 import kb.kiomnd2.kbblogsearch.domain.mapper.kakao.KakaoMapper;
 import kb.kiomnd2.kbblogsearch.interfaces.BlogSearchRequestDto;
 import lombok.AccessLevel;
@@ -20,7 +20,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 @Slf4j
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 @Service
-public class KakaoApiClientImpl implements ApiClient<KakaoBlogResponseDto> {
+public class KakaoApiCallerImpl implements ApiCaller<KakaoBlogResponseDto> {
 
     private final RestTemplate restTemplate;
     private final KakaoApiProperty kakaoApiProperty;

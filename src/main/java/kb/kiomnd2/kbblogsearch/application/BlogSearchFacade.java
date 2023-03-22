@@ -19,7 +19,6 @@ public class BlogSearchFacade {
     private final BlogDataProcessService dataProcessService;
     private final ApiClientService apiClientService;
 
-    @Transactional
     public BlogSearchResultDto search(BlogSearchRequestDto request) {
         dataProcessService.processData(request.getKeyword());
         return apiClientService.request(request);

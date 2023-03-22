@@ -2,9 +2,9 @@ package kb.kiomnd2.kbblogsearch.domain;
 
 import kb.kiomnd2.kbblogsearch.common.property.KakaoApiProperty;
 import kb.kiomnd2.kbblogsearch.common.property.NaverApiProperty;
-import kb.kiomnd2.kbblogsearch.domain.kakao.KakaoApiClientImpl;
+import kb.kiomnd2.kbblogsearch.domain.kakao.KakaoApiCallerImpl;
 import kb.kiomnd2.kbblogsearch.domain.kakao.KakaoBlogResponseDto;
-import kb.kiomnd2.kbblogsearch.domain.naver.NaverApiClientImpl;
+import kb.kiomnd2.kbblogsearch.domain.naver.NaverApiCallerImpl;
 import kb.kiomnd2.kbblogsearch.domain.naver.NaverBlogResponseDto;
 import kb.kiomnd2.kbblogsearch.interfaces.BlogSearchRequestDto;
 import org.junit.jupiter.api.BeforeEach;
@@ -29,13 +29,13 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 
 @Profile("test")
 @SpringBootTest
-class ApiClientTest {
+class ApiCallerTest {
 
     @Autowired
-    KakaoApiClientImpl kakaoApiClient;
+    KakaoApiCallerImpl kakaoApiClient;
 
     @Autowired
-    NaverApiClientImpl naverApiClient;
+    NaverApiCallerImpl naverApiClient;
 
     @Autowired
     RestTemplate restTemplate;
